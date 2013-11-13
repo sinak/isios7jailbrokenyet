@@ -14,7 +14,7 @@ require('./bundle/bundle')(app);
 // Misc API Stuff.
 
 var mongo = require('mongodb').MongoClient,
-    mongoURI = process.env.MONGO_URI;
+    mongoURI = process.env.MONGOHQ_URL;
 
 app.get("/api/transactions",function(request,response){
 
