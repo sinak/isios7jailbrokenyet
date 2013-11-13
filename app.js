@@ -13,7 +13,7 @@ app.engine('html', require('ejs').renderFile);
 
 // Mongo
 var mongo = require('mongodb').MongoClient;
-var mongoURI = process.env.MONGO_URI;
+var mongoURI = process.env.MONGOHQ_URL;
 
 // Sendgrid
 var SendGrid = require('sendgrid').SendGrid;
