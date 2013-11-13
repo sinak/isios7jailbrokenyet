@@ -3,7 +3,7 @@ var Q = require('q');
 
 // Init Mongo Database
 var mongo = require('mongodb').MongoClient,
-    mongoURI = process.env.MONGO_URI,
+    mongoURI = process.env.MONGOHQ_URL,
     ObjectID = require('mongodb').ObjectID;
 
 /******
