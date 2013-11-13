@@ -1,0 +1,150 @@
+<head>
+
+	<title>Thanks!</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,300,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+	<link href="/bundle/css/thanks.css" rel="stylesheet" type="text/css">
+	<link href="/bundle/css/artists.css" rel="stylesheet" type="text/css">
+	<link href="/bundle/css/footer.css" rel="stylesheet" type="text/css">
+
+	<!-- Google Analytics -->
+	<script>
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-39550435-1']);
+	  _gaq.push(['_setDomainName', 'commonly.cc']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+</head>
+
+<%
+
+// Get Link
+function getLink(name){
+
+	// Reddit
+	var redditLink = (/u\/(.+)/).exec(name);
+	if(redditLink){
+		return "http://reddit.com/u/"+redditLink[1];
+	}
+
+	// Twitter
+	var twitterLink = (/@(\w+)/).exec(name);
+	if(twitterLink){
+		return "https://twitter.com/"+twitterLink[1];
+	}
+
+	// Website
+	var websiteLink = (/([\w\.]+\.\w+)/).exec(name); // Multiple subdomains
+	if(websiteLink){
+		return "http://"+websiteLink[1];
+	}		
+
+	return null;
+}
+
+
+%>
+
+<body>
+
+	<div id="splash">
+		<div>Who's Awesome? You're Awesome!</div>
+	</div>
+
+	<div style="width:720px; margin:0 auto 200px auto;">
+		
+		<div class="text_content" style="width:720px">
+			
+			<b>
+			Thank you, 
+			<%
+			var name = transaction.custom.name || "";
+			var link = getLink(name);
+			if(link){%>
+				<a href="<%=link%>" target="_blank"><%=name%></a>!
+			<%}else if(name==""){%>
+				Anonymous!
+			<%}else{%>
+				<%=name%>!
+			<%}%>
+			</b>
+
+			<br>
+
+			Your confirmation email has been sent to <%=transaction.custom.email%>.
+
+			<br><br>
+
+			For your contribution of $<%=transaction.amount%>,
+			<%if(transaction.amount<10){%>
+				you get immediate access to all the soundtracks, spritesheets, and source code below.
+			<%}else{%>
+				you get:<br>
+				<%if(transaction.amount>=10){%>
+					1) your name credited in an AWESOME_PEOPLE.txt file in all downloadable packages!
+					<br>
+				<%}%>
+				<%if(transaction.amount>=25){%>
+					2) a <a target="_blank" href="https://s3.amazonaws.com/openbundle/PeteGresser.zip">
+						DRM-free copy of the Gap Monsters and 4 Horsemen Original Soundtrack
+					</a>.
+					<br>
+				<%}%>
+				<%if(transaction.amount>=50){%>
+					3) a <a target="_blank" href="https://s3.amazonaws.com/openbundle/EBF4.zip">
+						DRM-free copy of the Epic Battle Fantasy 4 Original Soundtrack
+					</a>.
+					<br>
+				<%}%>
+				<%if(transaction.amount>=100){%>
+					4) a personalized :The Game: version of you or your character, drawn by NutcaseNightmare.
+					<br>
+				<%}%>
+			<%}%>
+
+
+			<!--We sent your confirmation email! 
+			<br>
+			Your rewards
+			<br>
+			Also, have a survey.
+			<br>
+			Thanks for participating in this post-copyright experiment!
+			<br>
+			Back to main page-->
+
+			<a style="text-decoration: none;"
+				href="https://twitter.com/intent/tweet?text=I got soundtracks, spritesheets, and source code from The Open Bundle, an experiment to make copyright obsolete!&tw_p=tweetbutton&url=http%3A%2F%2Fcommonly.cc">
+				<div id="tweet_button">
+					TWEET THIS
+				</div>
+			</a>
+
+
+		</div>
+
+		<% var SHOW_DOWNLOADS = true; %>
+		<% include artists.ejs %>
+
+		<div style="text-align:center; font-size:20px; margin-top:10px">
+			<a href="/">back to frontpage</a>
+		</div>
+
+	</div>
+
+
+	<!-- FOOTER -->
+	<%- include footer.ejs %>
+
+</body>

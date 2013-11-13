@@ -1,0 +1,53 @@
+html, body {
+	padding: 0px; margin: 0px; 
+	width: 100%; height: 100%;
+}
+body {
+	font-family: Open Sans;
+	font-weight: 300;
+
+	background-size:cover;
+}
+a {
+	color:inherit;
+}
+
+#glass {
+	position: absolute;
+	width: 380px; height:400px;
+	top:25px; right:20px;
+	overflow: hidden;
+}
+#glass_bg {
+	position: absolute;
+	width: 380px; height:400px;
+	background-position: -400px -25px;
+}
+#glass_text {
+
+	position: absolute;
+	width: 330px; height:350px;
+	padding: 25px;
+	
+	background: rgba(255,255,255,0.8);
+	overflow-y: scroll;
+
+	font-family: Open Sans;
+	font-size: 18px;
+	color:#333;
+}
+
+#glass_text h2 {
+
+	text-align: center;
+	font-family: Bree Serif;
+	font-weight: 400;
+	font-size:25px;
+	color:#000;
+	line-height: 1em;
+	margin: 50px 0 10px 0;
+
+}
+#glass_text h2:first-child {
+	margin-top:20px;
+}
