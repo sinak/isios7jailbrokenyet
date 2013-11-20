@@ -2,6 +2,7 @@
 
 var project = {
 	title: "The Open Game Art Bundle",
+	banner: "/bundle/img/splash.jpg",
 	goal: 10000
 };
 
@@ -32,150 +33,52 @@ var SHOW_DOWNLOADS = false;
 
 %>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-	<title>Is iOS7 jailbroken yet?</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Google Web Fonts -->
-	<script type="text/javascript">
-	  WebFontConfig = {
-	    google: { families: [ 'Lato:100,300,400,700:latin' ] }
-	  };
+	<title>The Open Bundle</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,300,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+	
+	<link href="/bundle/css/bundle.css" rel="stylesheet" type="text/css">
+	<link href="/bundle/css/artists.css" rel="stylesheet" type="text/css">
+	<link href="/bundle/css/payments.css" rel="stylesheet" type="text/css">
+	<link href="/bundle/css/footer.css" rel="stylesheet" type="text/css">
+
+	<!-- Google Analytics -->
+	<script>
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-39550435-1']);
+	  _gaq.push(['_setDomainName', 'commonly.cc']);
+	  _gaq.push(['_trackPageview']);
+
 	  (function() {
-	    var wf = document.createElement('script');
-	    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-	      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-	    wf.type = 'text/javascript';
-	    wf.async = 'true';
-	    var s = document.getElementsByTagName('script')[0];
-	    s.parentNode.insertBefore(wf, s);
-	  })(); 
-	  </script>
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
 
-	<!-- CSS Files -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
+	</script>
 
 </head>
 
-
-
 <body>
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Is iOS7 jailbroken yet?</h1>
-      <h2>No.</h2>
-    </div>
-    <div id="prize">
-      <div class="container" >
-        <h3>Contribute to the Device Freedom prize:</h3>
-        <div id="amount">$324</div>
-
-        <div id="donate">
-          <div class="input-group input-group-lg">
-            <input type="text" id="donation" onblur="handleChange()" class="form-control" value="$25">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default">ADD TO FUND</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container" id="details">
-    <div class="criteria">
-      <h2>Criteria for claiming the prize</h2>
-      <p><strong>The jailbreak must:</strong></p>
-      <ul>
-        <li>- Work for iPhones (including 4S, 5, 5c, 5s) running iOS 7.</li>
-        <li>- Support the latest current version of iOS (7.03).</li>
-        <li>- Be untethered and accessible to the average user.</li>
-        <li>- Be publicly released and available free of charge.</li>
-      </ul>
-    </div>
 
 
-    <div class="judges row">
-      <h2>Judges:</h2>
-      <div class="col-lg-3 col-xs-6">
-        <img src="img/fixthedmca.png" alt="Fix the DMCA" />
-        <br />
-        FixtheDMCA.org
-      </div>
-      <div class="col-lg-3 col-xs-6">
-        <img src="img/judge-placeholder.png" alt="" />
-        <br />
-        Judge Placeholder<br />
-        Journalist, Publication
-      </div>
-      <div class="col-lg-3 col-xs-6">
-        <img src="img/judge-placeholder.png" alt="" />
-        <br />
-        Judge Placeholder<br />
-        Founder, Company
-      </div>
-      <div class="col-lg-3 col-xs-6">
-        <img src="img/judge-placeholder.png" alt="" />
-        <br />
-        Judge Placeholder<br />
-        Founder, Company
-      </div>
-    </div>
-
-    <div class="why">
-      <h2>Why we're doing this:</h2>
-      <p class="col-lg-10 col-xs-12 centerdiv">FixtheDMCA.org believes strongly that users should have the freedom to control their devices. We wanted a jailbreak for iOS 7, and figured other people would too, so we decided to start a prize for the first folks who can do it. Read more about why DMCA reform matters at FixtheDMCA.</p>
-    </div>
-
-    <div class="how">
-      <h2>How it works:</h2>
-      <p class="col-lg-10 col-xs-12 centerdiv">Submissions should be sent to prize@fixthedmca.org. The prize panel will review all submissions to ensure that they meet the criteria above. The prize will go to the first person or group who submits a successful solution.
-      <p class="col-lg-10 col-xs-12 centerdiv">10% of the prize funds will go toward payment processing fees, our platform Threshold's fee (5%), and donations to Public Knowledge and EFF to work on device freedom issues.</p>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="container">
-      <a href="">Contact us</a> - <a href="">Privacy policy</a> - <a href="">Powered by Threshold</a>
-    </div>
-  </div>
-
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script>
-      function handleChange() {
-     var myValue = document.getElementById("donation").value;
-     if (myValue.indexOf("$") != 0){myValue = "$" + myValue;}
-     document.getElementById("donation").value = myValue;
-  }
-  </script>
-</body>
-</html>
-
-
-<!-- <body>
-
-	<!-- SPLASH INFO 
+	<!-- SPLASH INFO -->
 
 	<div id="splash">
 		<div id="splash_bg" style="background-image:url(<%=project.banner%>)"></div>
 		<div id="splash_info">
 
-			<!-- The Title 
+			<!-- The Title -->
 			<div id="splash_title">
 				<%=project.title%>
 			</div>
 
-			<!-- Informational Video 
+			<!-- Informational Video -->
 			<div id="video_container">
 				<iframe
 					id="video"
@@ -185,7 +88,7 @@ var SHOW_DOWNLOADS = false;
 				</iframe>
 			</div>
 
-			<!-- Funding Progress Bar 
+			<!-- Funding Progress Bar -->
 			<div id="splash_funding">
 				<% var funding_message = "RAISED $"+total_raised.toFixed(0)+" OUT OF $"+project.goal+" FROM "+transactions.length+" BACKERS"; %>
 				<div id="splash_funding_bg"></div>
@@ -194,12 +97,12 @@ var SHOW_DOWNLOADS = false;
 				<script>document.getElementById("splash_funding_bar").style.width = "<%=(total_raised/project.goal)*100%>%";</script>
 			</div>
 
-			<!-- Pledge Button 
+			<!-- Pledge Button -->
 			<div id="splash_cta" onclick="swingTo('#pledge')">PLEDGE</div>
 
 		</div>
 
-		<!-- Countdown 
+		<!-- Countdown -->
 		<div id="countdown_container">
 			<div id="countdown"></div>
 		</div>
@@ -208,18 +111,18 @@ var SHOW_DOWNLOADS = false;
 
 
 
-	<!-- FURTHER INFORMATION 
+	<!-- FURTHER INFORMATION -->
 
 	<div style="background:#fff; overflow:hidden">
 
 		<br><br>
 
-		<!-- Markdown Description 
+		<!-- Markdown Description -->
 		<div id="preview" style="background:#fff; overflow:hidden">
 			<% include description.ejs %>
 		</div>
 
-		<!-- Anypay 
+		<!-- Anypay -->
 		<div id="pledge" class="horizontal_ribbon" style="margin:0 0 200px 0;">
 			<% include payments.ejs %>
 		</div>
@@ -228,9 +131,7 @@ var SHOW_DOWNLOADS = false;
 
 
 
-	<!-- SCRIPTS: Load before footer, so social buttons don't delay these 
-	<script src="/bundle/js/html5slider.js"></script>
-	<script src="/bundle/js/projectView.js"></script>
+	<!-- SCRIPTS: Load before footer, so social buttons don't delay these -->
 	<script>
 		var PAYPAL_ACTION = "<%=environment.PAYPAL_ACTION%>";
 		var PAYPAL_RECEIVER_EMAIL = "<%=environment.PAYPAL_RECEIVER_EMAIL%>";
@@ -240,8 +141,8 @@ var SHOW_DOWNLOADS = false;
 	<script src="https://checkout.stripe.com/v2/checkout.js"></script>
 
 
-	<!-- FOOTER 
+	<!-- FOOTER -->
 	<%- include footer.ejs %>
 
 
-</body> -->
+</body>

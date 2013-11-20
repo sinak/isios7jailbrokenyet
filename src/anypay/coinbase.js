@@ -28,6 +28,7 @@ module.exports = function(app){
 			        "name": "The Open Bundle",
 			        "price_string": request.body.amount,
 			        "price_currency_iso": "USD",
+        			"callback_url": "http://nameless-crag-7950.herokuapp.com/pay/coinbase/ipn?secret=" + COINBASE_SECRET,
 			        "custom": JSON.stringify(request.body),
 			        "description": "Sample description",
 			        "type": "buy_now",
@@ -84,7 +85,7 @@ module.exports = function(app){
         if(id){
             app.renderTransaction({ "payment_data.id": id },response);
         }else{
-        	response.send("No such Coinbase transaction found! If I done messed up, please email: nick@commonly.cc. Sorry!");
+        	response.send("No such Coinbase transaction found! If I done messed up, please email: sina.khanifar@gmail.com. Sorry!");
 		}
 	});
 

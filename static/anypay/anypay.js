@@ -1,6 +1,6 @@
 
 // Stop the form, by the way.
-var form = document.getElementById("payment_form");
+var form = document.getElementById("payform");
 var submit_button = form.submit;
 form.onsubmit = function(event){
     event.preventDefault(); // cancels the form submission
@@ -28,8 +28,7 @@ function pay(method){
 		custom: {
 			name: form.custom_name.value,
 			email: form.custom_email.value,
-			newsletter: form.custom_newsletter.checked,
-			split: getSplitAsList()
+			newsletter: form.custom_newsletter.checked
 		}
 
 	};
@@ -59,8 +58,8 @@ function pay(method){
 				address:     false,
 				amount:      formData.amount*100, // Convert to cents, coz that's what Stripe wants.
 				currency:    'usd',
-				name:        'The Open Bundle',
-				description: 'soundtracks, spritesheets, and source code.',
+				name:        'Device Freedom Prize',
+				description: 'Contribution',
 				panelLabel:  'Checkout',
 				token:       token
 			});
@@ -70,41 +69,7 @@ function pay(method){
 		case "coinbase":
 			sendForm("/pay/coinbase",formData);
 			break;
-
-		case "paypal":
-
-			// METADATA
-			formData.custom = JSON.stringify(formData);
-
-			// Environment Variables
-			if(!PAYPAL_ACTION || !PAYPAL_RECEIVER_EMAIL){
-				alert("Paypal environment variables not set");
-				return;
-			}
-			formData.business = PAYPAL_RECEIVER_EMAIL
-
-			// Paypal Vars
-			formData.item_name = "The Open Bundle";
-			formData.cmd = "_xclick";
-			formData.lc = "USD";
-			formData.currency_code = "USD";
-			formData.button_subtype = "services";
-			formData.no_note = "1";
-			formData.no_shipping = "1";
-			formData.bn = "PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted";
-
-			// Override Paypal Callback & Return
-			var domain = "http://open.commonly.cc"; //window.location.protocol+"//"+window.location.host;
-			formData.address_override = "1";
-			formData.notify_url = domain+"/pay/paypal/ipn";
-			formData.return = domain+"/pay/paypal/success";
-
-			sendForm(PAYPAL_ACTION,formData);
-
-			break;
-
 	}
-
 }
 
 // Creates a modal frame overlay

@@ -1,0 +1,177 @@
+<%
+
+var project = {
+	title: "The Open Game Art Bundle",
+	banner: "/bundle/img/splash.jpg",
+	goal: 10000
+};
+
+// Parse all floats
+transactions = transactions.map(function(transaction){
+	transaction.amount = parseFloat(transaction.amount);
+	return transaction;
+});
+
+// Remove broken transactions
+transactions = transactions.filter(function(transaction){
+	if(isNaN(transaction.amount)) return false;
+	if(transaction.amount<1) return false;
+	return true;
+});
+
+// Sort transactions
+transactions.sort(function(a,b){
+	return parseFloat(b.amount) - parseFloat(a.amount);
+});
+
+// Sum up transactions
+var total_raised = transactions.reduce(function(previousValue,currentValue){
+	return previousValue + parseFloat(currentValue.amount);
+},0);
+
+var SHOW_DOWNLOADS = false;
+
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Is iOS7 jailbroken yet?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Google Web Fonts -->
+	<script type="text/javascript">
+	  WebFontConfig = {
+	    google: { families: [ 'Lato:100,300,400,700:latin' ] }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })(); 
+	  </script>
+
+	<!-- CSS Files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+
+
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Is iOS7 jailbroken yet?</h1>
+      <h2>No.</h2>
+    </div>
+    <div id="prize">
+      <div class="container" >
+        <h3>Contribute to the Device Freedom prize:</h3>
+        <div id="amount">$324</div>
+
+        <div id="donate">
+              <button type="button" class="btn btn-default">ADD TO FUND</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="details">
+    <div class="criteria">
+      <h2>Criteria for claiming the prize</h2>
+      <p><strong>The jailbreak must:</strong></p>
+      <ul>
+        <li>- Work for iPhones (including 4S, 5, 5c, 5s) running iOS 7.</li>
+        <li>- Support the latest current version of iOS (7.03).</li>
+        <li>- Be untethered and accessible to the average user.</li>
+        <li>- Be publicly released and available free of charge.</li>
+      </ul>
+    </div>
+
+
+    <div class="judges row">
+      <h2>Judges:</h2>
+      <div class="col-md-3 col-xs-6">
+        <img src="img/fixthedmca.png" alt="Fix the DMCA" />
+        <br />
+        FixtheDMCA.org
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <img src="img/judge-placeholder.png" alt="" />
+        <br />
+        Judge Placeholder<br />
+        Journalist, Publication
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <img src="img/judge-placeholder.png" alt="" />
+        <br />
+        Judge Placeholder<br />
+        Founder, Company
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <img src="img/judge-placeholder.png" alt="" />
+        <br />
+        Judge Placeholder<br />
+        Founder, Company
+      </div>
+    </div>
+
+    <div class="why">
+      <h2>Why we're doing this:</h2>
+      <p class="col-lg-10 col-xs-12 centerdiv">FixtheDMCA.org believes strongly that users should have the freedom to control their devices. We wanted a jailbreak for iOS 7, and figured other people would too, so we decided to start a prize for the first folks who can do it. Read more about why DMCA reform matters at FixtheDMCA.</p>
+    </div>
+
+    <div class="how">
+      <h2>How it works:</h2>
+      <p class="col-lg-10 col-xs-12 centerdiv">Submissions should be sent to prize@fixthedmca.org. The prize panel will review all submissions to ensure that they meet the criteria above. The prize will go to the first person or group who submits a successful solution.
+      <p class="col-lg-10 col-xs-12 centerdiv">10% of the prize funds will go toward payment processing fees, our platform Threshold's fee (5%), and donations to Public Knowledge and EFF to work on device freedom issues.</p>
+    </div>
+  </div>
+
+
+  <div id="contribute">
+    <div class="container">
+			<% include payments.ejs %>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <a href="">Contact us</a> - <a href="">Privacy policy</a> - <a href="">Powered by Threshold</a>
+    </div>
+  </div>
+
+
+  <!-- Sina Scripts -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/paymentform.js"></script>
+  <script>
+      function handleChange() {
+     var myValue = document.getElementById("donation").value;
+     if (myValue.indexOf("$") != 0){myValue = "$" + myValue;}
+     document.getElementById("donation").value = myValue;
+  }
+  </script>
+
+  <!-- Scripts from Nick's code (may require editing) -->
+	<script>
+		var PAYPAL_ACTION = "<%=environment.PAYPAL_ACTION%>";
+		var PAYPAL_RECEIVER_EMAIL = "<%=environment.PAYPAL_RECEIVER_EMAIL%>";
+		var STRIPE_PUBLIC_KEY = "<%=environment.STRIPE_PUBLIC_KEY%>";
+	</script>
+	<script src="/anypay/anypay.js"></script>
+	<script src="https://checkout.stripe.com/v2/checkout.js"></script>
+</body>
+</html>

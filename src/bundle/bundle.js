@@ -16,6 +16,24 @@ module.exports = function(app){
 	app.get("/",function(request,response){
 
 		getTransactions().then( function(transactions){
+			response.render("jailbreak/index.ejs",{
+		
+				transactions: transactions,
+		
+				environment:{
+					PAYPAL_ACTION: process.env.PAYPAL_ACTION,
+					PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,
+					STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
+				}
+		
+			});
+		});
+
+	});
+
+	app.get("/old",function(request,response){
+
+		getTransactions().then( function(transactions){
 			response.render("bundle/index_old.ejs",{
 		
 				transactions: transactions,
@@ -30,6 +48,7 @@ module.exports = function(app){
 		});
 
 	});
+
 
 	app.get("/unlocked",function(request,response){
 

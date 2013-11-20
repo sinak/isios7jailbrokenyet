@@ -1,0 +1,47 @@
+<h2>Contribute to the prize fund:</h2>
+
+
+<div id="payformcontainer">
+	<form id="payform">
+		<div id="selectamount">
+			<div class="clearfix" id="amountbtns">
+				<div value="10" onclick="set_amount(this)">$10</div>
+				<div value="25" onclick="set_amount(this)" class="selected">$25</div>
+				<div value="50" onclick="set_amount(this)">$50</div>
+				<div value="100" onclick="set_amount(this)">$100</div>
+			</div>
+			<h5>or custom amount:</h5>
+			<input class="form-control input-lg" type="text" placeholder="$" id="custom_amount_input_container"  autocomplete="off" value="25.00" tabindex="1" name="amount" required>
+		</div>
+
+		<div class="textinput clearfix">
+			<h5>How would you like to be listed?</h5>
+				<p>examples: John Smith, @twitter, example.com, /u/Reddit.<br>
+					(leave blank to stay anonymous.)</p>
+				<input class="form-control" type="text" name="custom_name" tabindex="2">
+		</div>
+
+		<div class="textinput email clearfix">
+			<h5>What's your email address</h5>
+				<p>We'll email you once iOS 7 has been jailbroken.</p>
+				<div class="clearfix">
+					<input class="form-control" type="email" name="custom_email" id="custom_email" placeholder="your@email.com" required tabindex="3">
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="custom_newsletter">Notify me about future prizes.
+					</label>
+				</div>
+		</div>
+
+	<!-- This Submit Button is only to prompt HTML5 Form Validation -->
+	<button name="submit" style="display:none"></button>
+
+	</form>
+
+
+	<div class="clearfix" id="paybtns">
+	  <button type="button" onclick="pay('stripe')" class="btn btn-default col-xs-6">Pay with Credit Card</button>
+	  <button type="button" onclick="pay('coinbase')" class="btn btn-default col-xs-6">Pay with Bitcoin</button>
+	</div>
+</div>
