@@ -58,9 +58,6 @@ module.exports = function(app){
 			return;
 		}
 
-
-			response.send("Hi Sina!");
-
 		// Parse metadata, which was hidden in Custom.
 		var transaction = request.body.order;
 		var metadata = JSON.parse(transaction.custom);
