@@ -78,10 +78,10 @@ var SHOW_DOWNLOADS = false;
     <div id="prize">
       <div class="container" >
         <h3>Contribute to the Device Freedom prize:</h3>
-        <div id="amount">$324</div>
+        <div id="amount">$<%=total_raised.toFixed(0) %></div>
 
         <div id="donate">
-              <button type="button" class="btn btn-default">ADD TO FUND</button>
+              <a  onclick="swingTo('#contribute')" class="btn btn-default">ADD TO FUND</a>
           </div>
         </div>
       </div>
@@ -138,12 +138,51 @@ var SHOW_DOWNLOADS = false;
       <p class="col-lg-10 col-xs-12 centerdiv">Submissions should be sent to prize@fixthedmca.org. The prize panel will review all submissions to ensure that they meet the criteria above. The prize will go to the first person or group who submits a successful solution.
       <p class="col-lg-10 col-xs-12 centerdiv">10% of the prize funds will go toward payment processing fees, our platform Threshold's fee (5%), and donations to Public Knowledge and EFF to work on device freedom issues.</p>
     </div>
+
+      <div id="leaderboard" collapsed>
+        <h2>Leaderboard:</h2>
+        <%
+        // Get Link
+        function getLink(name){
+          // Reddit
+          var redditLink = (/u\/(.+)/).exec(name);
+          if(redditLink){return "http://reddit.com/u/"+redditLink[1];}
+          // Twitter
+          var twitterLink = (/@(\w+)/).exec(name);
+          if(twitterLink){return "https://twitter.com/"+twitterLink[1];}
+          // Website
+          var websiteLink = (/([\w\.]+\.\w+)/).exec(name); // Multiple subdomains
+          if(websiteLink){return "http://"+websiteLink[1];}   
+          return null;
+        } %>
+          <ul>
+            <% var y = 0; for(var i=0;i<transactions.length;i++){ var tx = transactions[i]; %>
+              <li>
+                <%
+                var name = tx.custom.name || "";
+                var link = getLink(name);
+                var y = i + 1;
+                if(link){%>
+                  <%=y%>. <a href="<%=link%>" target="_blank"><%=name%></a>
+                <%}else if(name==""){%>
+                  <%=y%>. <span>Anonymous</span>
+                <%}else{%>
+                  <%=y%>. <%=name%>
+                <%}%>
+                <span>- $<%=tx.amount.toFixed(2)%></span>
+              </li>
+            <% } %>
+          </ul>
+
+          <% if(transactions.length > 10){ %><div id="show_all_donators"> show all <%=transactions.length%></div><% } %>
+        </div>
+
   </div>
 
 
   <div id="contribute">
     <div class="container">
-			<% include payments.ejs %>
+    	  <% include payments.ejs %>
     </div>
   </div>
 

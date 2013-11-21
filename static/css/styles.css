@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	padding-right: 35px;
 	font-size: 22px;
 	color: #fff;
-	font-weight:300;
+	font-weight: 600;
 	border-radius: 10px;
 
 	border: 1px solid #fff;
@@ -107,6 +107,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 #donate .btn {
     height: 53px;
+    font-family: Lato, sans-serif;
 }
 
 
@@ -133,12 +134,50 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 #details .criteria p {
+	text-align:center;
+}
+#details p {
+	text-align:left;
 }
 
 .judges img {
 	margin-bottom:5px;
 }
 
+/* ================= */
+/* Leaderboard 		  CSS    */
+/* ================= */
+
+/* Hide all but first 25 */
+#leaderboard[collapsed] ul li:nth-child(n+11) {
+	display: none;
+}
+#leaderboard[collapsed] #show_all_donators {
+	text-align: center;
+	width:150px;
+	padding:5px 10px;
+	margin:10px auto;
+	border-radius: 100px;
+	background: #ccc;
+	color: #fff;
+
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+#leaderboard[collapsed] #show_all_donators:hover {
+	background: #ddd;
+}
+#leaderboard[expanded] #show_all_donators {
+	display: none;
+}
+
+#leaderboard li span {
+	color: #999;
+}
 
 
 /* ================= */
@@ -153,6 +192,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	background: -ms-linear-gradient(#6254D9,#884EE6); /* IE10+ */
 	background: linear-gradient(#6254D9,#884EE6); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6254D9', endColorstr='#884EE6',GradientType=0 ); /* IE6-9 */
+
+	margin-top:40px;
 
 	color: #fff;
 }
