@@ -161,10 +161,7 @@ var SHOW_DOWNLOADS = false;
               for(var i=0;i<transactions.length;i++){ 
                 var tx = transactions[i]; %>
                 <li>
-                  <%
-                  var name = tx.custom.name || "";
-                  var link = getLink(name);
-                  var y = i + 1;
+                  <% var name = tx.custom.name || "";   var link = getLink(name);  var y = i + 1;
                   if(link){%>
                     <%=y%>. <a href="<%=link%>" target="_blank"><%=name%></a>
                   <%}else if(name==""){%>
