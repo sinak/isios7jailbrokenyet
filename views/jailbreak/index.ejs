@@ -156,22 +156,25 @@ var SHOW_DOWNLOADS = false;
           return null;
         } %>
           <ul>
-            <% var y = 0; for(var i=0;i<transactions.length;i++){ var tx = transactions[i]; %>
-              <li>
-                <%
-                var name = tx.custom.name || "";
-                var link = getLink(name);
-                var y = i + 1;
-                if(link){%>
-                  <%=y%>. <a href="<%=link%>" target="_blank"><%=name%></a>
-                <%}else if(name==""){%>
-                  <%=y%>. <span>Anonymous</span>
-                <%}else{%>
-                  <%=y%>. <%=name%>
-                <%}%>
-                <span>- $<%=tx.amount.toFixed(2)%></span>
-              </li>
-            <% } %>
+            <%  if(transactions.length > 0) {
+              var y = 0; 
+              for(var i=0;i<transactions.length;i++){ 
+                var tx = transactions[i]; %>
+                <li>
+                  <%
+                  var name = tx.custom.name || "";
+                  var link = getLink(name);
+                  var y = i + 1;
+                  if(link){%>
+                    <%=y%>. <a href="<%=link%>" target="_blank"><%=name%></a>
+                  <%}else if(name==""){%>
+                    <%=y%>. <span>Anonymous</span>
+                  <%}else{%>
+                    <%=y%>. <%=name%>
+                  <%}%>
+                  <span>- $<%=tx.amount.toFixed(2)%></span>
+                </li>
+            <% }} %>
           </ul>
 
           <% if(transactions.length > 10){ %><div id="show_all_donators"> show all <%=transactions.length%></div><% } %>
