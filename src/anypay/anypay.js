@@ -23,7 +23,7 @@ module.exports = function(app){
 
 	// Various methods of payment
 	require('./coinbase')(app);
-	require('./paypal')(app);
+	//require('./paypal')(app);
 	require('./stripe')(app);
 
 
@@ -74,12 +74,12 @@ module.exports = function(app){
 				// No Transaction
 				if(!transaction){
 					deferred.resolve(false);
-					response.send("For some reason, Paypal's Instant Payment Notifications are being delayed for many of the Open Bundle's transactions.<br>I'll keep looking into this issue, it totally sucks.<br>Please check your email later today for your downloads link!<br><br>If that still doesn't work, please email nick@commonly.cc telling me I done messed up.");
+					response.send("For some reason your payment failed. If you continue to receive this message and think you shouldn't please send us an email at prize@isios7jailbrokenyet.com.");
 					return;
 				}
 
 				// Render Transaction
-				response.render("bundle/thanks.ejs",{
+				response.render("jailbreak/thanks.ejs",{
 					transaction: transaction
 				});
 				deferred.resolve(true);
@@ -95,7 +95,7 @@ module.exports = function(app){
 
 	};
 
-
+	/*
 	// Pay What You Want page
 	app.get("/buy",function(request,response){
 		response.render("anypay/buy.ejs",{
@@ -104,7 +104,7 @@ module.exports = function(app){
 				PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,
 			}
 		});
-	});
+	});*/
 
 
 	// A General Payment Complete Page	
@@ -140,11 +140,11 @@ function _sendEmail(transaction){
 		sendgrid.send({
 
 		    to: toEmail,
-		    from: 'nick@commonly.cc',
-		    subject: 'Thank you for backing The Open Bundle!',
-		    text: "Here's your download link: http://open.commonly.cc/paid?id="+id+"\n\n"+
-		    	  "Feel free to email me any comments or questions! I personally respond to all replies.\n\n"+
-                  "And you? Keep being awesome.\n~ Nick"
+		    from: 'prize@isios7jailbrokenyet.com',
+		    subject: 'Thank you for backing the Device Freedom Fund!',
+		    text: "Thanks so much for contributing. We'll be in touch with any news, or if the prize has been successfully claimed. \n\n"+
+		    	  "Feel free to email us with any comments or questions.\n\n"+
+                  "- The Device Freedom Fund team."
 		    //html: data
 
 		}, function(success, message) {

@@ -39,7 +39,7 @@ app.get("/api/transactions",function(request,response){
 	});
 
 });
-
+/*
 app.get("/api/surveys",function(request,response){
 
 	mongo.connect(mongoURI,function(err,db){
@@ -56,4 +56,4 @@ app.get("/api/surveys",function(request,response){
 		});
 	});
 
-});
+});*/

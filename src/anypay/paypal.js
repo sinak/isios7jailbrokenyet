@@ -75,7 +75,7 @@ module.exports = function(app){
         if(id){
             app.renderTransaction({ "payment_data.txn_id": id },response);
         }else{
-            response.send("No such Paypal transaction found! If I done messed up, please email: nick@commonly.cc. Sorry!");
+            response.send("No such Paypal transaction found! If I done messed up, please email: prize@isios7jailbrokenyet.com. Sorry!");
         }
     });
 

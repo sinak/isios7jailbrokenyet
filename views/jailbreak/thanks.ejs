@@ -1,0 +1,123 @@
+<%
+// Get Link
+function getLink(name){
+  // Reddit
+  var redditLink = (/u\/(.+)/).exec(name);
+  if(redditLink){return "http://reddit.com/u/"+redditLink[1];}
+  // Twitter
+  var twitterLink = (/@(\w+)/).exec(name);
+  if(twitterLink){return "https://twitter.com/"+twitterLink[1];}
+  // Website
+  var websiteLink = (/([\w\.]+\.\w+)/).exec(name); // Multiple subdomains
+  if(websiteLink){return "http://"+websiteLink[1];}   
+  return null;
+} %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Thanks for contributing!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <%- include header-includes.ejs %>
+      <%- include analytics.ejs %>
+</head>
+
+<body id="thanks">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=161296230719113";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="jumbotron thanks">
+    <div class="container">
+      <h1>Thanks for contributing <%
+			var name = transaction.custom.name || "";
+			var link = getLink(name);
+			if(link){%>
+				<a href="<%=link%>" target="_blank"><%=name%></a>!
+			<%}else if(name==""){%>
+				Anonymous!
+			<%}else{%>
+				<%=name%>!
+			<%}%></h1>
+      <p>A confirmation email for your contribution of $<%=transaction.amount%> of has been sent to <%=transaction.custom.email%>. <br />We'll let you know once the prize has been claimed.</p>
+    </div>
+    <div id="prize">
+      <div class="container" >
+        <h3>Let the world know!</h3>
+
+	    <div id="share_sidebar">
+	            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1384994725.html#_=1385324572076&amp;count=vertical&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://IsiOS7jailbrokenyet.com&amp;related=sinak&amp;size=m&amp;text=I just donated to the Device Freedom Prize. Want to know more?&amp;url=https://IsiOS7jailbrokenyet.com" class="twitter-share-button twitter-tweet-button twitter-count-vertical" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 56px; height: 62px;"></iframe>
+
+	            <div id="share-spacer"></div>
+
+	            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+	    </div>
+
+        <div id="donate">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" id="details">
+    <div class="criteria">
+      <h2><a href="/">Click here to return to the homepage</a></h2>
+    </div>
+<!-- 
+    <div class="judges row">
+      <h2>Judges</h2>
+      <div class="col-sm-9 col-xs-12 center-block">
+         <div class="col-sm-4 col-xs-12">
+            <img src="img/judge-placeholder.png" alt="" />
+            <br />
+            Judge Placeholder<br />
+            Journalist, Publication
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <img src="img/judge-placeholder.png" alt="" />
+            <br />
+            Judge Placeholder<br />
+            Founder, Company
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <img src="img/judge-placeholder.png" alt="" />
+            <br />
+            Judge Placeholder<br />
+            Founder, Company
+          </div>
+      </div>
+    </div>
+
+    
+    <div class="why">
+      <h2>Why we're doing this</h2>
+      <p class="col-sm-10 col-xs-12 centerdiv">FixtheDMCA.org believes strongly that users should have the freedom to control their devices. We wanted a jailbreak for iOS 7, and figured other people would too, so we decided to start a prize for the first folks who can do it. Read more about why DMCA reform matters at FixtheDMCA.</p>
+    </div>
+
+    <div class="how">
+      <h2>How it works</h2>
+      <p class="col-sm-10 col-xs-12 centerdiv">Submissions should be sent to prize@fixthedmca.org. The prize panel will review all submissions to ensure that they meet the criteria above. The prize will go to the first person or group who submits a successful solution.
+      <p class="col-sm-10 col-xs-12 centerdiv">10% of the prize funds will go toward payment processing fees, our platform Threshold's fee (5%), and donations to Public Knowledge and EFF to work on device freedom issues.</p>
+    </div>-->
+
+  </div>
+
+
+  <div class="footer">
+    <div class="container">
+      <a href="">Contact us</a> - <a href="">Privacy policy</a> - <a href="">Powered by Threshold</a>
+    </div>
+  </div>
+
+
+  <!-- Sina Scripts -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+</body>
+</html>

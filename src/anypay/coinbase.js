@@ -25,14 +25,14 @@ module.exports = function(app){
 			json: {
 				"api_key": COINBASE_API_KEY,
 				"button": {
-			        "name": "The Open Bundle",
+			        "name": "Device Freedom Prize",
 			        "price_string": request.body.amount,
 			        "price_currency_iso": "USD",
         			        "callback_url": "http://nameless-crag-7950.herokuapp.com/pay/coinbase/ipn?secret=" + COINBASE_SECRET,
         			        "success_url": "http://nameless-crag-7950.herokuapp.com/pay/coinbase/success",
         			        "cancel_url": "http://nameless-crag-7950.herokuapp.com/",
 			        "custom": JSON.stringify(request.body),
-			        "description": "Sample description",
+			        "description": "Contribution to the Device Freedom Prize",
 			        "type": "buy_now",
 			        "style": "custom_large"
 			    }
@@ -87,7 +87,7 @@ module.exports = function(app){
         if(id){
             app.renderTransaction({ "payment_data.id": id },response);
         }else{
-        	response.send("No such Coinbase transaction found! If I done messed up, please email: sina.khanifar@gmail.com. Sorry!");
+        	response.send("No such Coinbase transaction found! If you think something's gone wrong, please email us at: prize@isios7jailbrokenyet.com. Sorry!");
 		}
 	});
 

@@ -13,7 +13,12 @@ Homepage Logic
 ******/
 module.exports = function(app){
 
-	app.get("/",function(request,response){
+
+	    app.get("/",function(request,response){
+	        response.send("Coming soon!");
+	    });
+
+	app.get("/secret-page",function(request,response){
 
 		getTransactions().then( function(transactions){
 			response.render("jailbreak/index.ejs",{
@@ -21,8 +26,8 @@ module.exports = function(app){
 				transactions: transactions,
 		
 				environment:{
-					PAYPAL_ACTION: process.env.PAYPAL_ACTION,
-					PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,
+					/*PAYPAL_ACTION: process.env.PAYPAL_ACTION,
+					PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,*/
 					STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
 				}
 		
@@ -31,25 +36,7 @@ module.exports = function(app){
 
 	});
 
-	app.get("/old",function(request,response){
-
-		getTransactions().then( function(transactions){
-			response.render("bundle/index_old.ejs",{
-		
-				transactions: transactions,
-		
-				environment:{
-					PAYPAL_ACTION: process.env.PAYPAL_ACTION,
-					PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,
-					STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
-				}
-		
-			});
-		});
-
-	});
-
-
+	/*
 	app.get("/unlocked",function(request,response){
 
 		getTransactions().then( function(transactions){
@@ -59,14 +46,14 @@ module.exports = function(app){
 		});
 		
 	});
-
+	
 	app.get("/bio/:name",function(request,response){
 		response.render("bundle/biography.ejs",{
 			name: request.params.name
 		});
-	});
+	});*/
 
-	app.get("/survey",function(request,response){
+	/*app.get("/survey",function(request,response){
 
 		// Makes sure the query _id is valid
 	    var _id = request.query.id;
@@ -93,9 +80,9 @@ module.exports = function(app){
 
 		});
 
-	});
+	});*/
 
-	app.post("/survey/save",function(request,response){
+	/*app.post("/survey/save",function(request,response){
 
 		// Make sure _id is valid
 		var _id = request.body.id;
@@ -120,7 +107,7 @@ module.exports = function(app){
 	    	response.send("success");
 	    });
 
-	});
+	});*/
 
 };
 
@@ -149,7 +136,7 @@ function getTransactions(){
 	return deferred.promise;
 
 }
-
+/*
 function upsertSurvey(survey){
 	
 	var deferred = Q.defer();
@@ -187,6 +174,6 @@ function getSurvey(query){
 	return deferred.promise;
 
 }
-
+*/
 
 
