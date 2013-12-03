@@ -18,6 +18,10 @@ module.exports = function(app){
         request.assert('amount', 'Name is required').isDecimal();   //Validate amount
         request.assert('custom', 'Custom value is confused').isAlphanumeric();  //Validate custom field
         request.assert('item_id', 'A valid item id is required').equals(0);  //Validate item_id
+        request.assert('custom[email]', 'A valid item email is required').isEmail();  //Validate item_id
+        request.assert('custom[newsletter]', 'A valid newsletter boolean is required').isAlpha();  //Validate newsletter boolean
+        request.assert('custom[name]', 'A valid name is required').isAlphanumeric();  //Validate name
+        request.assert('custom', 'A valid custom response is required').isAlphanumeric();  //Validate custom
         
         Q.fcall(function(){
 
