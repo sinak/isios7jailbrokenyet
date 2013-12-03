@@ -8,6 +8,7 @@
 		"express": "3.1.0",
 		"ejs": "0.8.4",
 		"express-validator": "1.0.1",
+		"util": "0.10.0",
 
 		"request": "2.21.0",
 		"q": "0.9.3",

@@ -22,6 +22,13 @@ module.exports = function(app){
         request.assert('custom[newsletter]', 'A valid newsletter boolean is required').isAlpha();  //Validate newsletter boolean
         request.assert('custom[name]', 'A valid name is required').isAlphanumeric();  //Validate name
         request.assert('custom', 'A valid custom response is required').isAlphanumeric();  //Validate custom
+
+
+          var errors = request.validationErrors();
+          if (errors) {
+            response.send('There have been validation errors: ' + util.inspect(errors), 400);
+            return;
+          }
         
         Q.fcall(function(){
 
