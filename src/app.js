@@ -1,7 +1,11 @@
+var util = require('util');
 var express = require('express');
+var expressValidator = require('express-validator'); 
 var app = express();
+
 app.use('/', express.static('./static'));
 app.use(express.bodyParser());
+app.use(expressValidator());
 var port = process.env.PORT || 80;
 app.listen(port);
 console.log('Express server started on port '+port);

@@ -41,11 +41,7 @@ function pay(method){
 
 	// Buy through chosen payment data
 	switch(method){
-
-		case "balanced":
-			openModal("/pay/balanced",formData);
-			break;
-
+		
 		case "stripe":
 
 			var token = function(res){

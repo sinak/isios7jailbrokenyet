@@ -7,50 +7,52 @@ var STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 
 
 /*******
-
-Stripe - white-label credit card & bank account processing
-http://balancedpayments.com
-
+Stripe payments
 *******/
+
 module.exports = function(app){
 
-	// Charge a card and log the transaction
-	app.post("/pay/stripe",function(request,response){
-		
-		Q.fcall(function(){
+    // Charge a card and log the transaction
+    app.post("/pay/stripe",function(request,response){
 
-			// Charge card
-			return callStripe("charges",{
-				card: request.body.stripeToken,
-				amount: Math.round(request.body.amount*100), // Converting to USD cents.
-				currency: "usd"
-			});
+        request.assert('amount', 'Name is required').isDecimal();   //Validate amount
+        request.assert('custom', 'Custom value is confused').isAlphanumeric();  //Validate custom field
+        request.assert('item_id', 'A valid item id is required').equals(0);  //Validate item_id
+        
+        Q.fcall(function(){
 
-		}).then(function(chargeData){
+            // Charge card
+            return callStripe("charges",{
+                card: request.body.stripeToken,
+                amount: Math.round(request.body.amount*100), // Converting to USD cents.
+                currency: "usd"
+            });
 
-			// It gets returned as a JSON string, ugh.
-			chargeData = JSON.parse(chargeData);
+        }).then(function(chargeData){
 
-			// Log transaction with Custom Vars
-			return app.logTransaction({
+            // It gets returned as a JSON string, ugh.
+            chargeData = JSON.parse(chargeData);
 
-				item_id: request.body.item_id,
-				amount: (chargeData.amount/100), // Converting to USD dollars
-				custom: request.body.custom,
+            // Log transaction with Custom Vars
+            return app.logTransaction({
 
-				payment_method: "stripe",
-				payment_data: chargeData
+                item_id: request.body.item_id,
+                amount: (chargeData.amount/100), // Converting to USD dollars
+                custom: request.body.custom,
 
-			});
+                payment_method: "stripe",
+                payment_data: chargeData
 
-		}).then(function(transaction){
-			response.redirect("/paid?id="+transaction._id);
-		},function(err){
-			console.log(err);
-			response.end();
-		});
+            });
 
-	});
+        }).then(function(transaction){
+            response.redirect("/paid?id="+transaction._id);
+        },function(err){
+            console.log(err);
+            response.end();
+        });
+
+    });
 
 };
 
@@ -58,28 +60,28 @@ module.exports = function(app){
 // Helper method: Make a Stripe API call, with promise.
 function callStripe(url,params){
 
-	var deferred = Q.defer();
+    var deferred = Q.defer();
 
-	httpRequest.post({
-		
-		url: "https://api.stripe.com/v1/"+url,
-		auth: {
-			user: STRIPE_SECRET_KEY,
-			pass: "",
-			sendImmediately: true
-		},
-		form: params
+    httpRequest.post({
+        
+        url: "https://api.stripe.com/v1/"+url,
+        auth: {
+            user: STRIPE_SECRET_KEY,
+            pass: "",
+            sendImmediately: true
+        },
+        form: params
 
-	}, function(error,response,body){
+    }, function(error,response,body){
 
-		if(error){
-			return deferred.reject(new Error());
-		}
+        if(error){
+            return deferred.reject(new Error());
+        }
 
-		deferred.resolve(body);
+        deferred.resolve(body);
 
-	});
+    });
 
-	return deferred.promise;
+    return deferred.promise;
 
 }
