@@ -94,7 +94,7 @@ module.exports = function(app){
 	// A General Payment Complete Page	
 	app.get("/paid",function(request,response){
 
-		request.assert('id', 'A valid item id is required').isNumeric();  //Validate item_id
+		request.assert('id', 'A valid item id is required').isAlphanumeric();  //Validate item_id
 
 		var errors = request.validationErrors();
 		if (errors) {

@@ -25,6 +25,11 @@ module.exports = function(app){
 			});
 		});
 	});
+
+	app.get("/privacy",function(request,response){
+		response.render("jailbreak/privacy.ejs");
+	});
+
 };
 
 function getTransactions(){

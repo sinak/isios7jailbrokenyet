@@ -184,7 +184,11 @@ body#thanks .footer {
   margin-top:60px;
 }
 
-body#thanks #details h2 a {
+#thanks h1 a, #thanks h1 a:visited {
+  color: #FFF476;
+}
+
+body#thanks #details h2 a, body#thanks #details h2 a:visited {
   color: #ff4981;
 }
 
@@ -232,6 +236,10 @@ body#thanks #details h2 a {
   color: #ff4981;
   margin-top:50px;
   margin-bottom:15px;
+}
+
+#details a:visited {
+
 }
 
 #details ul {
@@ -293,7 +301,7 @@ body#thanks #details h2 a {
 }
 
 #leaderboard li span {
-  color: #999;
+  color: #858585;
 }
 
 
