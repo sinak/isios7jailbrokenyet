@@ -53,7 +53,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
     </div>
     <div id="prize">
       <div class="container" >
-        <h3><strong>Help fund the Device Freedom Prize:</strong> a crowdfunded reward for the first person or group to release an open source jailbreak.</h3>
+        <h3><strong>Help fund the Device Freedom Prize:</strong> a crowdfunded reward for the first developer(s) who release an open source iOS 7 jailbreak.</h3>
         <div id="amount">$<%=total_raised.toFixed(0) %></div>
 
         <div id="donate">
@@ -75,17 +75,6 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
     </div>
 
   <div class="container" id="details">
-    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv criteria">
-      <h2>Criteria for claiming the prize</h2>
-      <p><strong>The jailbreak must:</strong></p>
-      <ul>
-        <li>- Work for iPhones (including 4S, 5, 5c, 5s) running iOS 7.</li>
-        <li>- Support the latest current version of iOS (7.03).</li>
-        <li>- Be untethered and accessible to the average user.</li>
-        <li>- Be publicly released and available free of charge.</li>
-        <li>- Be released under one of the <a href="http://opensource.org/licenses" target="_blank">OSI-approved licenses</a></li>
-      </ul>
-    </div>
 
     <div class="judges row">
       <h2>Judges</h2>
@@ -121,26 +110,22 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
       <h2>Why we're doing this</h2>
       <p >We strongly believe that users should have the freedom to control their devices. We wanted an open source jailbreak for iOS 7, giving users the capability to install what they want on their own devices and the ability to audit the code they're using to do so, so we started a prize for the first people who can do it.</p> 
 
-      <p>Read more about why device freedom and reform to the DMCA's anti-circumvention provisions matter at <a target="_blank" href="http://fixthedmca.org">EFF.org</a>, in Chilling Effect's <a href="http://www.chillingeffects.org/anticircumvention/faq.cgi" target="_blank">FAQs about DMCA Anticircumvention</a> and at <a target="_blank" href="http://fixthedmca.org">FixtheDMCA.org</a>.<p>
-
-    </div>
-
-    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv how">
-      <h2>How it works</h2>
-      <p>Submissions should be sent to <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a> and include links to source code and functioning binaries. The prize panel will review all submissions to ensure that they meet the prize criteria. The prize will go to the first person or group that creates and submits a successful solution.</p>
+      <p>Read more about why device freedom and reform to the DMCA's anti-circumvention provisions matter at <a target="_blank" href="http://fixthedmca.org">EFF.org</a>, in Chilling Effect's <a href="http://www.chillingeffects.org/anticircumvention/faq.cgi" target="_blank">FAQs about DMCA Anticircumvention</a> and at <a target="_blank" href="http://fixthedmca.org">FixtheDMCA.org</a>.
     </div>
 
 
-    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv terms">
-      <h2>Terms</h2>
-      <p>10% of contributions will be split as follows (depending on payment method): payment processing (2.9% + 30¢), Threshold platform fees (5%), donations to EFF and Public Knowledge (remainder). 90% of the prize fund will be paid out to the winning submission.<p>
-
-      <p>If no one claims the prize within 18 months, we will contact all donors and provide instructions as to how to receive a refund. Any remaining funds will be donated to PK and EFF.</p>
-
-      <p>Questions? Contact us at <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a>.</p>
-
-</p>
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv criteria">
+      <h2>Criteria for claiming the prize</h2>
+      <p><strong>The jailbreak must:</strong></p>
+      <ul>
+        <li>- Work for iPhones (including 4S, 5, 5c, 5s) running iOS 7.</li>
+        <li>- Support the latest current version of iOS (7.04).</li>
+        <li>- Be untethered and accessible to the average user.</li>
+        <li>- Be publicly released and available free of charge.</li>
+        <li>- Be released under one of the <a href="http://opensource.org/licenses" target="_blank">OSI-approved licenses</a></li>
+      </ul>
     </div>
+
 
       <div id="leaderboard" class="col-md-8 col-sm-10 col-xs-12 centerdiv " collapsed>
         <h2>Top Contributors</h2>
@@ -178,7 +163,22 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
           </ul>
 
           <% if(transactions.length > 10){ %><div id="show_all_donators"> show all <%=transactions.length%></div><% } %>
-        </div>
+      </div>
+
+
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv how">
+      <h2>How it works</h2>
+      <p>Submissions should be sent to <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a> and include links to source code and functioning binaries. The prize panel will review all submissions to ensure that they meet the prize criteria. The prize will go to the first person or group that creates and submits a successful solution.</p>
+    </div>
+
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv terms">
+      <h2>Terms</h2>
+      <p>10% of contributions will be split as follows (depending on payment method): payment processing (2.9% + 30¢), Threshold platform fees (5%), donations to EFF and Public Knowledge (remainder). 90% of the prize fund will be paid out to the winning submission.<p>
+
+      <p>If no one claims the prize within 18 months, we will contact all donors and provide instructions as to how to receive a refund. Any remaining funds will be donated to PK and EFF.</p>
+
+      <p>Questions? Contact us at <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a>.</p>
+    </div>
 
   </div>
 
