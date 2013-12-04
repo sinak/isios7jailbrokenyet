@@ -1,1 +1,0 @@
-The Open Game Art Bundle, yo.
