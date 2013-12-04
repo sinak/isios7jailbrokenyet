@@ -12,10 +12,6 @@ var mongo = require('mongodb').MongoClient,
 module.exports = function(app){
 
 	app.get("/",function(request,response){
-		response.send("Coming soon!");
-	});
-
-	app.get("/secret-page",function(request,response){
 		getTransactions().then( function(transactions){
 			response.render("jailbreak/index.ejs",{
 				transactions: transactions,
