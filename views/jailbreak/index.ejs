@@ -32,6 +32,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
 <head>
 	<title>Is iOS7 jailbroken yet?</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="favicon.ico"/>
       <%- include header-includes.ejs %>
       <%- include analytics.ejs %>
       <%- include social-metadata.ejs %>
@@ -48,7 +49,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="jumbotron">
+  <div class="jumbotron homepage">
     <div class="container">
       <h1>Is iOS7 jailbroken yet?</h1>
       <h2>No.</h2>
@@ -59,7 +60,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
         <div id="amount">$<%=total_raised.toFixed(0) %></div>
 
         <div id="donate">
-              <a  onclick="swingTo('#contribute')" class="btn btn-default">ADD TO FUND</a>
+              <a  onclick="swingTo('#contribute'); return false;" href="#contribute" class="btn btn-default">ADD TO FUND</a>
           </div>
         </div>
       </div>

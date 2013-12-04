@@ -35,7 +35,13 @@ function onAmountChange(){
 	}
 
 }
-amountInput.addEventListener("change",onAmountChange);
+
+if (!amountInput.addEventListener) {
+    amountInput.attachEvent("onchange", onAmountChange);
+}
+else {
+    amountInput.addEventListener("change",onAmountChange);
+}
 
 ////////////////
 // Swinging Click
