@@ -280,7 +280,7 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
   text-align: center;
   font-size:18px;
   margin-bottom: 6px;
-  font-weight:300;
+  font-weight: 400;
 }
 
 .judges img {
@@ -312,10 +312,10 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 #leaderboard[collapsed] #show_all_donators {
   text-align: center;
   width:150px;
-  padding:5px 10px;
-  margin:10px auto;
+  padding: 5px 10px 8px 10px;
+  margin: 10px 0;
   border-radius: 100px;
-  background: #ccc;
+  background: #B6B6B6;
   color: #fff;
 
   cursor: pointer;
@@ -568,7 +568,7 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 .footer {
   background-color: #4A4A4A;
   text-align:right;
-  height:150px;
+  height:170px;
   padding-top:90px;
   color:#fff;
   font-size:14px;
@@ -577,6 +577,7 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 
 .footer a {
   color: #fff;
+  font-weight:600;
 }
 
 
