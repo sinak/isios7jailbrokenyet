@@ -59,6 +59,7 @@ function pay(method){
 				name:        'Device Freedom Prize',
 				description: 'Contribution',
 				panelLabel:  'Checkout',
+				email: formData.custom.email,
 				token:       token
 			});
 

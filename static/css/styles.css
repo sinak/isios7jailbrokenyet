@@ -574,6 +574,12 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 /* Footer CSS        */
 /* ================= */
 
+.poweredby {
+  text-align:center;
+  position:relative;
+  bottom:10px;
+}
+
 .footer {
   background-color: #4A4A4A;
   text-align:right;

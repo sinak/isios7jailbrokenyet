@@ -122,16 +122,17 @@ var sendgrid = new SendGrid( process.env.SENDGRID_USERNAME, process.env.SENDGRID
 function _sendEmail(transaction){
     
 	var toEmail = transaction.custom.email;
+	var transAmount = transaction.amount;
 	var id = transaction._id;
 	if(toEmail){
 
 		sendgrid.send({
 			to: toEmail,
-			from: 'prize@isios7jailbrokenyet.com',
+			from: 'Device Freedom Prize <prize@isios7jailbrokenyet.com>',
 			subject: 'Thank you for backing the Device Freedom Fund!',
-			text: "Thanks so much for contributing. We'll be in touch with any news, or if the prize has been successfully claimed. \n\n"+
-				  "Feel free to email us with any comments or questions.\n\n"+
-			  "- The Device Freedom Fund team."
+			text: "Thanks for your contribution of  $" + transAmount + "to the Device Freedom Prize. We'll be in touch once the prize has been claimed.\n\n"+
+				  "Let us know if you have any questions, and in the meantime check out http://fixthedmca.org to learn more about why device freedom matters.\n\n"+
+				  "- The Device Freedom Prize team.\nhttp://twitter.com/devicefreedom"
 		}, function(success, message) {
 			if(success){
 				console.log("sent!");
