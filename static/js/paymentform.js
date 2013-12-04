@@ -28,9 +28,10 @@ function onAmountChange(){
 	var currentAmount = parseFloat(amountInput.value) || 0;
 
 	// Minimum of $1 needed
-	if(currentAmount<1){
-		amountInput.value = "1.00";
-		currentAmount = 1;							
+	if(currentAmount<5){
+		amountInput.value = "5.00";
+		currentAmount = 1;
+		alert("A minimum amount of $5 is needed to cover transaction fees. Thanks!");
 	}
 
 }

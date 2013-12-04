@@ -53,7 +53,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
     </div>
     <div id="prize">
       <div class="container" >
-        <h3>Contribute to the Device Freedom prize:</h3>
+        <h3><strong>Help fund the Device Freedom Prize:</strong> a crowdfunded reward for the first person or group to release an open source jailbreak.</h3>
         <div id="amount">$<%=total_raised.toFixed(0) %></div>
 
         <div id="donate">
@@ -66,7 +66,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
 
     <div id="share_sidebar">
         <span id="share-widget" style="">
-            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1384994725.html#_=1385324572076&amp;count=vertical&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fsina.is%2Fredefining-terrorism%2F&amp;related=sinak&amp;size=m&amp;text=What%20is%20terrorism%3F%20The%20frightening%20new%20definition%20-%3E%20&amp;url=http%3A%2F%2Fsina.is%2Fredefining-terrorism%2F" class="twitter-share-button twitter-tweet-button twitter-count-vertical" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 56px; height: 62px;"></iframe>
+            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1384994725.html#_=1385324572076&amp;count=vertical&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fsina.is%2Fredefining-terrorism%2F&amp;related=sinak&amp;size=m&amp;text=What%20is%20terrorism%3F%20The%20frightening%20new%20definition%20-%3E%20&amp;url=http%3A%2F%2Fsina.is%2Fredefining-terrorism%2F" class="twitter-share-button twitter-tweet-button twitter-count-vertical" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 56px; height: 62px;"></iframe>
 
             <div id="share-spacer"></div>
 
@@ -75,61 +75,75 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
     </div>
 
   <div class="container" id="details">
-    <div class="criteria">
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv criteria">
       <h2>Criteria for claiming the prize</h2>
       <p><strong>The jailbreak must:</strong></p>
       <ul>
-        <li>Work for iPhones (including 4S, 5, 5c, 5s) running iOS 7.</li>
-        <li>Support the latest current version of iOS (7.03).</li>
-        <li>Be untethered and accessible to the average user.</li>
-        <li>Be publicly released and available free of charge.</li>
-        <li>Must be released under one of the <a href="http://opensource.org/licenses" target="_blank">OSI-approved licenses</a></li>
+        <li>- Work for iPhones (including 4S, 5, 5c, 5s) running iOS 7.</li>
+        <li>- Support the latest current version of iOS (7.03).</li>
+        <li>- Be untethered and accessible to the average user.</li>
+        <li>- Be publicly released and available free of charge.</li>
+        <li>- Be released under one of the <a href="http://opensource.org/licenses" target="_blank">OSI-approved licenses</a></li>
       </ul>
     </div>
 
     <div class="judges row">
       <h2>Judges</h2>
-      <div class="col-sm-9 col-xs-12 center-block">
-          <div class="col-sm-4 col-xs-12">
-            <img src="img/judge-placeholder.png" alt="" />
+      <div class="col-md-8 col-sm-10 col-xs-12 center-block">
+          <div class="col-sm-3 col-xs-12">
+            <img src="img/chris.jpg" alt="Chris Maury!" />
             <br />
-            Chris Maury<br />
+            <p>Chris Maury</p>
             Prize proposer and accessibility advocate
           </div>
-         <div class="col-sm-4 col-xs-12">
-            <img src="img/judge-placeholder.png" alt="" />
+         <div class="col-sm-3 col-xs-12">
+            <img src="img/cory.jpg" alt="Cory Doctorow" />
             <br />
-            Cory Doctorow<br />
-            Author, journalist, co-editor of Boing Boing 
+            <p>Cory Doctorow</p>
+            Author, journalist, co-editor of Boing Boing
           </div>
-          <div class="col-sm-4 col-xs-12">
-            <img src="img/judge-placeholder.png" alt="" />
+          <div class="col-sm-3 col-xs-12">
+            <img src="img/kyle.jpg" alt="Kyle Wiens" />
             <br />
-            Kyle Wiens<br />
-            CEO, iFixit
+            <p>Kyle Wiens</p>
+            <span>CEO, iFixit</span>
           </div>
-          <div class="col-sm-4 col-xs-12">
-            <img src="img/judge-placeholder.png" alt="" />
+          <div class="col-sm-3 col-xs-12">
+            <img src="img/biella.jpg" alt="Biella Coleman" />
             <br />
-            Biella Coleman<br />
-            Author and Professor at McGill University
+            <p>Biella Coleman</p>
+            <span>Author and Professor at McGill University</span>
           </div>
       </div>
     </div>
 
-    <div class="why">
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv why">
       <h2>Why we're doing this</h2>
-      <p class="col-sm-10 col-xs-12 centerdiv">FixtheDMCA.org believes strongly that users should have the freedom to control their devices. We wanted a jailbreak for iOS 7, and figured other people would too, so we decided to start a prize for the first folks who can do it. Read more about why DMCA reform matters at FixtheDMCA.</p>
+      <p >We strongly believe that users should have the freedom to control their devices. We wanted an open source jailbreak for iOS 7, giving users the capability to install what they want on their own devices and the ability to audit the code they're using to do so, so we started a prize for the first people who can do it.</p> 
+
+      <p>Read more about why device freedom and reform to the DMCA's anti-circumvention provisions matter at <a target="_blank" href="http://fixthedmca.org">EFF.org</a>, in Chilling Effect's <a href="http://www.chillingeffects.org/anticircumvention/faq.cgi" target="_blank">FAQs about DMCA Anticircumvention</a> and at <a target="_blank" href="http://fixthedmca.org">FixtheDMCA.org</a>.<p>
+
     </div>
 
-    <div class="how">
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv how">
       <h2>How it works</h2>
-      <p class="col-sm-10 col-xs-12 centerdiv">Submissions should be sent to prize@fixthedmca.org. The prize panel will review all submissions to ensure that they meet the criteria above. The prize will go to the first person or group who submits a successful solution.
-      <p class="col-sm-10 col-xs-12 centerdiv">10% of the prize funds will go toward payment processing fees, our platform Threshold's fee (5%), and donations to Public Knowledge and EFF to work on device freedom issues.</p>
+      <p>Submissions should be sent to <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a> and include links to source code and functioning binaries. The prize panel will review all submissions to ensure that they meet the prize criteria. The prize will go to the first person or group that creates and submits a successful solution.</p>
     </div>
 
-      <div id="leaderboard" collapsed>
-        <h2>Top Contributers</h2>
+
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv terms">
+      <h2>Terms</h2>
+      <p>10% of contributions will be split as follows (depending on payment method): payment processing (2.9% + 30¢), Threshold platform fees (5%), donations to EFF and Public Knowledge (remainder). 90% of the prize fund will be paid out to the winning submission.<p>
+
+      <p>If no one claims the prize within 18 months, we will contact all donors and provide instructions as to how to receive a refund. Any remaining funds will be donated to PK and EFF.</p>
+
+      <p>Questions? Contact us at <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a>.</p>
+
+</p>
+    </div>
+
+      <div id="leaderboard" class="col-md-8 col-sm-10 col-xs-12 centerdiv " collapsed>
+        <h2>Top Contributors</h2>
         <%
         // Get Link
         function getLink(name){
