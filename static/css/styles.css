@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 a:visited {
-  color: #fff;
+  color: #428bca;
 }
 
 /* ================= */
@@ -499,6 +499,35 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 
 }
 
+
+/* ================= */
+/* Static page  CSS        */
+/* ================= */
+
+#staticpage .jumbotron  {
+    padding: 20px 0;
+
+}
+#staticpage #content {
+  margin-bottom:50px;
+}
+
+#staticpage #content  ul {
+    margin-left:20px;
+}
+
+#staticpage #content .summary {
+  font-size:19px;
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+
+#staticpage #content  .summary ul {
+  margin-top: 30px;
+}
+#staticpage #content  .summary ul li{
+    margin-bottom: 20px;
+}
 
 /* ================= */
 /* Footer CSS        */
