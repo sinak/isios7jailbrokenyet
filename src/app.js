@@ -10,6 +10,15 @@ var port = process.env.PORT || 80;
 app.listen(port);
 console.log('Express server started on port '+port);
 
+app.configure('production', function(){
+	app.get('*',function(req,res,next){
+	  if(req.headers['x-forwarded-proto']!='https')
+	    res.redirect('https://isios7jailbrokenyet.com'+req.url)
+	  else
+	    next() /* Continue to other routes if we're not redirecting */
+	});
+});
+
 require('./anypay/anypay')(app);
 require('./bundle/bundle')(app);
 
@@ -43,11 +52,4 @@ app.get("/api/transactions",function(request,response){
 		});
 	});
 
-});
-
-app.get('*',function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://isios7jailbrokenyet.com'+req.url)
-  else
-    next() /* Continue to other routes if we're not redirecting */
 });
