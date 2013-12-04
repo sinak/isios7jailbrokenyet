@@ -16,6 +16,11 @@ module.exports = function(app){
 	 // Charge a card and log the transaction
 	 app.post("/pay/stripe",function(request,response){
 
+		request.assert('amount', 'Amount is required').isDecimal();   //Validate amount
+		request.assert('item_id', 'A valid item id is required').equals(0);  //Validate item_id
+		request.assert(['custom', 'email'], 'No email - we need one!').isEmail();  //Validate email field
+		request.assert(['custom', 'newsletter'], 'Issue with the newsletter form field').isAlpha();  //Validate newsletter field
+
 		 var errors = request.validationErrors();
 		 if (errors) {
 		 	response.send('There have been validation errors: ' + util.inspect(errors), 400);
