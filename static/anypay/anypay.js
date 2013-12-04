@@ -3,7 +3,7 @@
 var form = document.getElementById("payform");
 var submit_button = form.submit;
 form.onsubmit = function(event){
-    event.preventDefault(); // cancels the form submission
+	event.preventDefault(); // cancels the form submission
 };
 
 // Perform Payment!
@@ -108,10 +108,10 @@ function sendForm(url,params){
 	        		: prop;
 
 	    	if(typeof value == "object"){
-	        	flatten(value, toObject, label);
-	        }else{
-	        	toObject[label] = value;
-	        }
+			flatten(value, toObject, label);
+		}else{
+			toObject[label] = value;
+		}
 
 	    }
 	    return toObject;
@@ -120,19 +120,19 @@ function sendForm(url,params){
 
 
 	// Create, populate, and submit form
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", url);
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value",params[key]);
-            form.appendChild(hiddenField);
-         }
-    }
-    document.body.appendChild(form);
-    form.submit();
+	var form = document.createElement("form");
+	form.setAttribute("method", "post");
+	form.setAttribute("action", url);
+	for(var key in params) {
+		if(params.hasOwnProperty(key)) {
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", key);
+			hiddenField.setAttribute("value",params[key]);
+			form.appendChild(hiddenField);
+		}
+	}
+	document.body.appendChild(form);
+	form.submit();
 
 }

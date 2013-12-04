@@ -28,33 +28,19 @@
 </head>
 
 <%
-
 // Get Link
 function getLink(name){
-
-	// Reddit
-	var redditLink = (/u\/(.+)/).exec(name);
-	if(redditLink){
-		return "http://reddit.com/u/"+redditLink[1];
-	}
-
-	// Twitter
-	var twitterLink = (/@(\w+)/).exec(name);
-	if(twitterLink){
-		return "https://twitter.com/"+twitterLink[1];
-	}
-
-	// Website
-	var websiteLink = (/([\w\.]+\.\w+)/).exec(name); // Multiple subdomains
-	if(websiteLink){
-		return "http://"+websiteLink[1];
-	}		
-
-	return null;
-}
-
-
-%>
+  // Reddit
+  var redditLink = (/u\/(.+)/).exec(name);
+  if(redditLink){return "http://reddit.com/u/"+redditLink[1];}
+  // Twitter
+  var twitterLink = (/@(\w+)/).exec(name);
+  if(twitterLink){return "https://twitter.com/"+twitterLink[1];}
+  // Website
+  var websiteLink = (/([\w\.]+\.\w+)/).exec(name); // Multiple subdomains
+  if(websiteLink){return "http://"+websiteLink[1];}   
+  return null;
+} %>
 
 <body>
 

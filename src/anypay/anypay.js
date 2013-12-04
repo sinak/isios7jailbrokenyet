@@ -1,6 +1,7 @@
 // Import Libraries
 var Q = require('q');
 var httpRequest = require('request');
+var util = require('util'); 
 
 // Init Mongo Database
 var mongo = require('mongodb').MongoClient,
@@ -9,23 +10,18 @@ var mongo = require('mongodb').MongoClient,
 
 
 /*******
-
 ANYPAY.JS
 Lets users pay what they want, however they want.
-
 1) Payment & Completion pages
 2) Logging transactions
 3) Different payment methods
-
 *******/
+
 module.exports = function(app){
 
-
-	// Various methods of payment
+	// Methods of payment
 	require('./coinbase')(app);
-	//require('./paypal')(app);
 	require('./stripe')(app);
-
 
 	// Log transactions, with promise.
 	app.logTransaction = function(transaction){
@@ -48,7 +44,7 @@ module.exports = function(app){
 		mongo.connect(mongoURI,function(err,db){
 			if(err){ return deferred.reject(err); }
 			db.collection('transactions').insert(transaction,function(err){
-	            if(err){ return deferred.reject(err); }
+			            if(err){ return deferred.reject(err); }
 				deferred.resolve(transaction);
 				_sendEmail(transaction);
 				db.close();
@@ -67,10 +63,10 @@ module.exports = function(app){
 		mongo.connect(mongoURI,function(err,db){
 			if(err){ return deferred.reject(err); }
 			db.collection('transactions').find(query).toArray(function(err,docs){
-	            if(err){ return deferred.reject(err); }
 
-	            var transaction = docs[0];
-				
+			            if(err){ return deferred.reject(err); }
+			            var transaction = docs[0];
+					
 				// No Transaction
 				if(!transaction){
 					deferred.resolve(false);
@@ -95,30 +91,24 @@ module.exports = function(app){
 
 	};
 
-	/*
-	// Pay What You Want page
-	app.get("/buy",function(request,response){
-		response.render("anypay/buy.ejs",{
-			environment:{
-				PAYPAL_ACTION: process.env.PAYPAL_ACTION,
-				PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,
-			}
-		});
-	});*/
-
-
 	// A General Payment Complete Page	
 	app.get("/paid",function(request,response){
 
-	    request.assert('id', 'A valid item id is required').isNumeric();  //Validate item_id
+		request.assert('id', 'A valid item id is required').isNumeric();  //Validate item_id
+
+		var errors = request.validationErrors();
+		if (errors) {
+			response.send('There have been validation errors: ' + util.inspect(errors), 400);
+			return;
+		}
 
 		// Makes sure the query _id is valid
-	    var _id = request.query.id;
-	    var query = {};
-	    var checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$");
-	    query._id = checkForHexRegExp.test(_id) ? new ObjectID(_id) : -1;
+		var _id = request.query.id;
+		var query = {};
+		var checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$");
+		query._id = checkForHexRegExp.test(_id) ? new ObjectID(_id) : -1;
 
-	    // Display the transaction
+		// Display the transaction
 		app.renderTransaction(query, response);
 
 	});
@@ -131,34 +121,25 @@ var sendgrid = new SendGrid( process.env.SENDGRID_USERNAME, process.env.SENDGRID
 //var fs = require('fs');
 function _sendEmail(transaction){
     
-    var toEmail = transaction.custom.email;
-    var id = transaction._id;
-    if(toEmail){
-
-    	// TODO: EJS!
-    	//fs.readFile('./static/bundle/email.html', 'utf8', function (err,data) {
-		//if(err){ return console.log(err); }
+	var toEmail = transaction.custom.email;
+	var id = transaction._id;
+	if(toEmail){
 
 		sendgrid.send({
-
-		    to: toEmail,
-		    from: 'prize@isios7jailbrokenyet.com',
-		    subject: 'Thank you for backing the Device Freedom Fund!',
-		    text: "Thanks so much for contributing. We'll be in touch with any news, or if the prize has been successfully claimed. \n\n"+
-		    	  "Feel free to email us with any comments or questions.\n\n"+
-                  "- The Device Freedom Fund team."
-		    //html: data
-
+			to: toEmail,
+			from: 'prize@isios7jailbrokenyet.com',
+			subject: 'Thank you for backing the Device Freedom Fund!',
+			text: "Thanks so much for contributing. We'll be in touch with any news, or if the prize has been successfully claimed. \n\n"+
+				  "Feel free to email us with any comments or questions.\n\n"+
+			  "- The Device Freedom Fund team."
 		}, function(success, message) {
-		    if(success){
-		    	console.log("sent!");
-		    }else{
-		    	console.log(message);
-		    }
-		});	
-
-		//});
-
+			if(success){
+				console.log("sent!");
+			}
+			else{
+				console.log(message);
+			 }
+		});
     }
             
 }

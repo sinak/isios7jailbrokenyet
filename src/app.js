@@ -31,33 +31,23 @@ app.get("/api/transactions",function(request,response){
 		.find( {}, fieldLimit )
 		.sort( {_id:-1} )
 		.toArray(function(err,docs){
-            if(err){ return console.log(err); }
-            
-            // Pretty print JSON
-            response.setHeader('Content-Type', 'text/plain');
-            response.send( JSON.stringify(docs,null,4) );
+			
+		            if(err){ return console.log(err); }
+		            
+		            // Pretty print JSON
+		            response.setHeader('Content-Type', 'text/plain');
+		            response.send( JSON.stringify(docs,null,4) );
 
-            db.close();
+		            db.close();
 
 		});
 	});
 
 });
-/*
-app.get("/api/surveys",function(request,response){
 
-	mongo.connect(mongoURI,function(err,db){
-		if(err){ return console.log(err); }
-		db.collection('surveys').find({}).sort({_id:-1}).toArray(function(err,docs){
-            if(err){ return console.log(err); }
-            
-            // Pretty print JSON
-            response.setHeader('Content-Type', 'text/plain');
-            response.send( JSON.stringify(docs,null,4) );
-
-            db.close();
-
-		});
-	});
-
-});*/
+app.get('*',function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://isios7jailbrokenyet.com'+req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
+});

@@ -1,23 +1,30 @@
 // Import Libraries
 var Q = require('q');
 var httpRequest = require('request');
+var util = require('util'); 
 
 // Environment Variables
 var COINBASE_API_KEY = process.env.COINBASE_API_KEY;
 var COINBASE_SECRET = process.env.COINBASE_SECRET;
 
-
 /*******
-
-Coinbase - a bitcoin payment service
-https://coinbase.com/
-
+Coinbase payment script
 *******/
-module.exports = function(app){
 
+module.exports = function(app){
 
 	// Create a payment form, then immediately redirect to it.
 	app.post('/pay/coinbase',function(request,response){
+
+	        request.assert('amount', 'Amount is required').isDecimal();   //Validate amount
+	        request.assert(['custom', 'email'], 'No email - we need one!').isEmail();  //Validate email field
+	        request.assert(['custom', 'newsletter'], 'Issue with the newsletter form field').isAlpha();  //Validate newsletter field
+
+	          var errors = request.validationErrors();
+	          if (errors) {
+			response.send('There have been validation errors: ' + util.inspect(errors), 400);
+			return;
+	          }
 
 		httpRequest.post({
 			
@@ -28,9 +35,9 @@ module.exports = function(app){
 			        "name": "Device Freedom Prize",
 			        "price_string": request.body.amount,
 			        "price_currency_iso": "USD",
-        			        "callback_url": "http://nameless-crag-7950.herokuapp.com/pay/coinbase/ipn?secret=" + COINBASE_SECRET,
-        			        "success_url": "http://nameless-crag-7950.herokuapp.com/pay/coinbase/success",
-        			        "cancel_url": "http://nameless-crag-7950.herokuapp.com/",
+	     			        "callback_url": "http://nameless-crag-7950.herokuapp.com/pay/coinbase/ipn?secret=" + COINBASE_SECRET,
+	     			        "success_url": "http://nameless-crag-7950.herokuapp.com/pay/coinbase/success",
+	     			        "cancel_url": "http://nameless-crag-7950.herokuapp.com/",
 			        "custom": JSON.stringify(request.body),
 			        "description": "Contribution to the Device Freedom Prize",
 			        "type": "buy_now",
@@ -51,7 +58,6 @@ module.exports = function(app){
 
 	});
 
-
 	// Instant Payments Notification Callback
 	app.post("/pay/coinbase/ipn",function(request,response){
 
@@ -70,7 +76,6 @@ module.exports = function(app){
 			item_id: metadata.item_id,
 			amount: (transaction.total_native.cents/100), // Convert to USD
 			custom: metadata.custom,
-
 			payment_method: "coinbase",
 			payment_data: transaction
 
@@ -83,11 +88,13 @@ module.exports = function(app){
 
 	// When payment complete, show Payment Success page.
 	app.get("/pay/coinbase/success",function(request,response){
+		
 		var id = request.query.order ? request.query.order.id : null;
-        if(id){
-            app.renderTransaction({ "payment_data.id": id },response);
-        }else{
-        	response.send("No such Coinbase transaction found! If you think something's gone wrong, please email us at: prize@isios7jailbrokenyet.com. Sorry!");
+
+		if(id){
+			app.renderTransaction({ "payment_data.id": id },response);
+		}else{
+			response.send("No such Coinbase transaction found! If you think something's gone wrong, please email us at: prize@isios7jailbrokenyet.com. Sorry!");
 		}
 	});
 
