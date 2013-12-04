@@ -66,6 +66,15 @@ a:visited {
   margin: 27px 0 20px 0;
 }
 
+.jumbotron #prize h3 {
+  max-width: 720px;
+  
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+  font-size: 26px;
+}
+
 .jumbotron p {
   font-weight: 400;
 }
@@ -245,14 +254,18 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 #details ul {
   list-style-type: none;
   padding-left:0;
+  text-align: left;
+  margin:  0 auto;
+  line-height: 1.8;
 }
 
 #details .criteria p {
-  text-align:center;
+  text-align: left;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 #details p {
   text-align:left;
-  width: 564px;
 }
 
 .judges img {
@@ -262,6 +275,25 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 .judges .center-block { 
   float:none;
 }
+
+#details .judges .center-block p {
+  text-align: center;
+  font-size:18px;
+  margin-bottom: 6px;
+  font-weight:300;
+}
+
+.judges img {
+  -webkit-box-shadow: 5px 5px 1px 0px rgba(10, 10, 10, .1);
+
+  box-shadow: 5px 5px 1px 0px rgba(10, 10, 10, .1);
+
+}
+
+.judges .center-block {
+  font-size: 14px;
+  line-height:1.0;
+} 
 
 @media (max-width: 767px) {
   .judges div {
@@ -540,6 +572,7 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
   padding-top:90px;
   color:#fff;
   font-size:14px;
+  line-height:1.6;
 }
 
 .footer a {

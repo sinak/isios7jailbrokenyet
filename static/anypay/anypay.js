@@ -33,9 +33,9 @@ function pay(method){
 
 	};
 
-	// If less than $1, reject.
-	if(formData.amount<1){
-		alert("A minimum amount of $1 is needed to cover transaction fees. thanks!");
+	// If less than $5 reject.
+	if(formData.amount<5){
+		alert("A minimum amount of $5 is needed to cover transaction fees. Thanks!");
 		return;
 	}
 
