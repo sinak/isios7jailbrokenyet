@@ -3,7 +3,9 @@
 var form = document.getElementById("payform");
 var submit_button = form.submit;
 form.onsubmit = function(event){
-	event.preventDefault(); // cancels the form submission
+	
+	if(event.preventDefault) {event.preventDefault();}
+	else {event.returnValue = false;} // cancels the form submission
 };
 
 // Perform Payment!
