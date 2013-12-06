@@ -312,7 +312,7 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 /* ================= */
 
 /* Hide all but first 25 */
-#leaderboard[collapsed] ul li:nth-child(n+11) {
+#leaderboard[collapsed] ul li:nth-child(n+21) {
   display: none;
 }
 #leaderboard[collapsed] #show_all_donators {
