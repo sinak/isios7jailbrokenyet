@@ -20,6 +20,17 @@ function getLink(name){
       <%- include header-includes.ejs %>
       <%- include analytics.ejs %>
       <%- include social-metadata.ejs %>
+      <script>
+        <% var transactionid = transaction.payment_data.id + "a93"; 
+        transactionid = transactionid.slice(3) + Math.random().toString(36).substr(2, 5);%>
+        ga('require', 'ecommerce', 'ecommerce.js');
+        ga('ecommerce:addTransaction', {
+          'id': '<%=transactionid%>',                // Transaction ID. Required.
+          'revenue': '<%=transaction.amount%>',                     // Grand Total.
+          'affiliation': '<%=transaction.payment_method%>'   // Affiliation or store name.
+        });
+        ga('ecommerce:send');
+      </script>
 </head>
 
 <body id="thanks">
