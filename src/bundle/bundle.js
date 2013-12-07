@@ -22,6 +22,18 @@ module.exports = function(app){
 		});
 	});
 
+
+	app.get("/no",function(request,response){
+		getTransactions().then( function(transactions){
+			response.render("jailbreak/index-alt.ejs",{
+				transactions: transactions,
+				environment:{
+					STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
+				}
+			});
+		});
+	});
+
 	app.get("/privacy",function(request,response){
 		response.render("jailbreak/privacy.ejs");
 	});

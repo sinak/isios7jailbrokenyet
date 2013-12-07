@@ -1,0 +1,213 @@
+<%
+var project = {
+	title: "The Device Freedom Prize"
+};
+
+// Parse all floats
+transactions = transactions.map(function(transaction){
+	transaction.amount = parseFloat(transaction.amount);
+	return transaction;
+});
+
+// Remove broken transactions
+transactions = transactions.filter(function(transaction){
+	if(isNaN(transaction.amount)) return false;
+	if(transaction.amount<1) return false;
+	return true;
+});
+
+// Sort transactions
+transactions.sort(function(a,b){
+	return parseFloat(b.amount) - parseFloat(a.amount);
+});
+
+// Sum up transactions
+var total_raised = transactions.reduce(function(previousValue,currentValue){
+	return previousValue + parseFloat(currentValue.amount);
+},0);
+
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Is iOS7 jailbroken yet?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="favicon.ico"/>
+      <%- include header-includes.ejs %>
+      <%- include analytics.ejs %>
+      <%- include social-metadata.ejs %>
+
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=161296230719113";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="jumbotron homepage">
+    <div class="container">
+      <h1>Is iOS7 jailbroken yet?</h1>
+      <h2>No.</h2>
+    </div>
+    <div id="prize">
+      <div class="container" >
+        <h3><strong>Help fund the Device Freedom Prize:</strong> a crowdfunded reward for the first developer(s) who release an open source iOS 7 jailbreak.</h3>
+        <div id="amount">$<%=total_raised.toFixed(0) %></div>
+
+        <div id="donate">
+              <a  onclick="swingTo('#contribute'); return false;" href="#contribute" class="btn btn-default">ADD TO FUND</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div id="share_sidebar">
+        <span id="share-widget" style="">
+            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1384994725.html#_=1385324572076&amp;count=vertical&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https%3A%2F%2FisiOS7jailbrokenyet.com%2F&amp;related=devicefreedom%2Csinak&amp;size=m&amp;text=Want%20an%20open%20source%20iOS%207%20jailbreak%3F" class="twitter-share-button twitter-tweet-button twitter-count-vertical" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 56px; height: 62px;"></iframe>
+
+            <div id="share-spacer"></div>
+
+            <div class="fb-like" data-href="https://isiOS7jailbrokenyet.com" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </span>
+    </div>
+
+  <div class="container" id="details">
+
+    <div class="judges row">
+      <h2>Judges</h2>
+      <div class="col-md-8 col-sm-10 col-xs-12 center-block">
+          <div class="col-sm-3 col-xs-12">
+            <img src="img/chris.jpg" alt="Chris Maury!" />
+            <br />
+            <p><a href="https://twitter.com/cmaury" target="_blank">Chris Maury</a></p>
+            Prize proposer and accessibility advocate
+          </div>
+         <div class="col-sm-3 col-xs-12">
+            <img src="img/cory.jpg" alt="Cory Doctorow" />
+            <br />
+            <p><a href="https://twitter.com/doctorow" target="_blank">Cory Doctorow</a></p>
+            Co-editor of Boing Boing, Author, and DMCA Activist
+          </div>
+          <div class="col-sm-3 col-xs-12">
+            <img src="img/kyle.jpg" alt="Kyle Wiens" />
+            <br />
+            <p><a href="https://twitter.com/kwiens" target="_blank">Kyle Wiens</a></p>
+            <span>Co-founder and CEO, <a href="http://www.ifixit.com" target="_blank">iFixit</a></span>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+            <img src="img/biella.jpg" alt="Biella Coleman" />
+            <br />
+            <p><a href="https://twitter.com/biellacoleman" target="_blank">Biella Coleman</a></p>
+            <span>Professor and Author of Coding Freedom</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv why">
+      <h2>Why we're doing this</h2>
+      <p >We strongly believe that users should have the freedom to control their devices. We wanted an open source jailbreak for iOS 7, giving users the capability to install what they want on their own devices and the ability to audit the code they're using to do so. Jailbreaking is also <a href="http://chrismaury.com/post/68845124623/jailbreaking-is-an-important-right-especially-for-the" target="_blank">critical to ensuring</a> that the disabled are able to use their mobile devices as easily as possible. So we started a prize for the first people who can do it. </p> 
+
+      <p>Read more about why device freedom and reform to the DMCA's anti-circumvention provisions matter at <a target="_blank" href="http://fixthedmca.org">EFF.org</a>, in Chilling Effect's <a href="http://www.chillingeffects.org/anticircumvention/faq.cgi" target="_blank">FAQs about anti-circumvention</a>, and at <a target="_blank" href="http://fixthedmca.org">FixtheDMCA.org</a>.
+    </div>
+
+
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv criteria">
+      <h2>Criteria for claiming the prize</h2>
+      <p><strong>The jailbreak must:</strong></p>
+      <ul>
+        <li>- Work for iPhones (including 4S, 5, 5c, 5s) running iOS 7.</li>
+        <li>- Support the latest current version of iOS (7.04).</li>
+        <li>- Be untethered and accessible to the average user.</li>
+        <li>- Be publicly released and available free of charge.</li>
+        <li>- Be released under one of the <a href="http://opensource.org/licenses" target="_blank">OSI-approved licenses</a>.</li>
+      </ul>
+    </div>
+
+
+      <div id="leaderboard" class="col-md-8 col-sm-10 col-xs-12 centerdiv " collapsed>
+        <h2>Top Contributors</h2>
+        <%
+        // Get Link
+        function getLink(name){
+          // Reddit
+          var redditLink = (/u\/(.+)/).exec(name);
+          if(redditLink){return "http://reddit.com/u/"+redditLink[1];}
+          // Twitter
+          var twitterLink = (/@(\w+)/).exec(name);
+          if(twitterLink){return "https://twitter.com/"+twitterLink[1];}
+          // Website
+          var websiteLink = (/([\w\.]+\.\w+)/).exec(name); // Multiple subdomains
+          if(websiteLink){return "http://"+websiteLink[1];}   
+          return null;
+        } %>
+          <ul>
+            <%  if(transactions.length > 0) {
+              var y = 0; 
+              for(var i=0;i<transactions.length;i++){ 
+                var tx = transactions[i]; %>
+                <li>
+                  <% if (tx.custom != null){ var name = tx.custom.name || "";   var link = getLink(name)};  var y = i + 1;
+                  if(link){%>
+                    <%=y%>. <a href="<%=link%>" target="_blank"><%=name%></a>
+                  <%}else if(name==""){%>
+                    <%=y%>. <span>Anonymous</span>
+                  <%}else{%>
+                    <%=y%>. <%=name%>
+                  <%}%>
+                  <span>- $<%=tx.amount.toFixed(2)%></span>
+                </li>
+            <% }} %>
+          </ul>
+
+          <% if(transactions.length > 10){ %><div id="show_all_donators"> show all <%=transactions.length%></div><% } %>
+      </div>
+
+
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv how">
+      <h2>How it works</h2>
+      <p>Submissions should be sent to <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a> and include links to source code and functioning binaries. The prize panel will review all submissions to ensure that they meet the prize criteria. The prize will go to the first person or group that creates and submits a successful solution.</p>
+    </div>
+
+    <div class="col-md-8 col-sm-10 col-xs-12 centerdiv terms">
+      <h2>Terms</h2>
+      <p>The contributions will be split as follows: 90% of the prize fund will be paid out to the winning submission. 10% will go toward payment processing (2.9% + 30¢ for credit cards), Threshold platform fees (5%), and donations to <a href="https://eff.org" target="_blank">EFF</a> and <a target="_blank" href="http://publicknowledge.org/">Public Knowledge</a> (remainder).
+
+      <p>If no one claims the prize within 18 months, we will contact all donors and provide instructions as to how to receive a refund. Any remaining funds will be donated to PK and EFF.</p>
+
+      <p>Questions? Contact us at <a href="mailto:prize@isios7jailbrokenyet.com" target="_blank">prize@isios7jailbrokenyet.com</a>.</p>
+    </div>
+
+  </div>
+
+
+  <div id="contribute">
+    <div class="container">
+    	  <% include payments-alt.ejs %>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <%- include footer.ejs %>
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/paymentform.js"></script>
+  <script>
+        function handleChange() {
+       var myValue = document.getElementById("donation").value;
+       if (myValue.indexOf("$") != 0){myValue = "$" + myValue;}
+       document.getElementById("donation").value = myValue;
+    }
+  </script>
+  <script>
+  	var STRIPE_PUBLIC_KEY = "<%=environment.STRIPE_PUBLIC_KEY%>";
+  </script>
+  <script src="/anypay/anypay.js"></script>
+  <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+</body>
+</html>
