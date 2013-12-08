@@ -47,17 +47,22 @@ function getLink(name){
 
   <div class="jumbotron thanks">
     <div class="container">
-      <h1>Thanks for contributing <%
-			var name = transaction.custom.name || "";
-			var link = getLink(name);
-			if(link){%>
-				<a href="<%=link%>" target="_blank"><%=name%></a>!
-			<%}else if(name==""){%>
-				Anonymous!
-			<%}else{%>
-				<%=name%>!
-			<%}%></h1>
-      <p>A confirmation email for your contribution of $<%=transaction.amount%> of has been sent to <%=transaction.custom.email%>. <br />We'll let you know once the prize has been claimed.</p>
+      <% if (transaction.amount != null) { %>
+        <h1>Thanks for contributing <%
+  			var name = transaction.custom.name || "";
+  			var link = getLink(name);
+  			if(link){%>
+  				<a href="<%=link%>" target="_blank"><%=name%></a>!
+  			<%}else if(name==""){%>
+  				Anonymous!
+  			<%}else{%>
+  				<%=name%>!
+  			<%}%></h1>
+        <p>A confirmation email for your contribution of $<%=transaction.amount%> of has been sent to <%=transaction.custom.email%>. <br />We'll let you know once the prize has been claimed.</p>
+      <% } else { %>
+        <h1>ERROR: Your payment wasn't processed</h1>
+        <p>For some reason your payment failed, likely due to a problem with your credit card. Please <a href="/" style="text-decoration: underline; color: #fff">try again</a>.</p>
+      <% } %>
     </div>
 
     <div id="prize">
