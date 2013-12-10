@@ -490,7 +490,7 @@ div#paypal span {
   color: #fff;
   font-weight:300;
   border-radius: 10px;
-
+  margin-top:10px;
   border: 1px solid #fff;
   background-color: #42d00d;
     -webkit-transition: background 0.2s ease-out;  

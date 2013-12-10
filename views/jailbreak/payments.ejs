@@ -41,9 +41,10 @@
 
 	<div class="clearfix" id="paybtns">
 	  <button type="button" onclick="pay('stripe')" class="btn btn-default col-xs-6">Pay with Credit Card</button>
-	  <button type="button" onclick="pay('coinbase')" class="btn btn-default col-xs-6">Pay with Bitcoin</button>
-	  <div class="clearfix"></div>
-	  <div id="paypal">You can also <span onclick="pay('paypal')" >Pay with PayPal</span></div>
+	  <button type="button" onclick="pay('paypal')" class="btn btn-default col-xs-6" id="paypalbtn">Pay with Paypal</button>
+	  <div style="text-align:center;">
+		  <button type="button" onclick="pay('coinbase')" class="btn btn-default col-xs-6 centerdiv">Pay with Bitcoin</button>
+	  </div>
 	</div>
 </div>
 
