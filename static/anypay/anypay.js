@@ -68,6 +68,38 @@ function pay(method){
 		case "coinbase":
 			sendForm("/pay/coinbase",formData);
 			break;
+
+
+		case "paypal":
+
+			// METADATA
+			formData.custom = JSON.stringify(formData);
+
+			// Environment Variables
+			if(!PAYPAL_ACTION || !PAYPAL_RECEIVER_EMAIL){
+				alert("Paypal environment variables not set");
+				return;
+			}
+			formData.business = PAYPAL_RECEIVER_EMAIL
+
+			// Paypal Vars
+			formData.item_name = "Device Freedom Prize Contribution";
+			formData.cmd = "_xclick";
+			formData.lc = "USD";
+			formData.currency_code = "USD";
+			formData.button_subtype = "services";
+			formData.no_note = "1";
+			formData.no_shipping = "1";
+			formData.bn = "PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted";
+
+			// Override Paypal Callback & Return
+			var domain = "https://isios7jailbrokenyet.com"; //window.location.protocol+"//"+window.location.host;
+			formData.address_override = "1";
+			formData.notify_url = domain+"/pay/paypal/ipn";
+
+			sendForm(PAYPAL_ACTION,formData);
+
+			break;
 	}
 }
 

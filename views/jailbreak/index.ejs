@@ -221,6 +221,8 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
   </script>
   <script>
   	var STRIPE_PUBLIC_KEY = "<%=environment.STRIPE_PUBLIC_KEY%>";
+      var PAYPAL_ACTION = "<%=environment.PAYPAL_ACTION%>";
+      var PAYPAL_RECEIVER_EMAIL = "<%=environment.PAYPAL_RECEIVER_EMAIL%>";
   </script>
   <script src="/anypay/anypay.js"></script>
   <script src="https://checkout.stripe.com/v2/checkout.js"></script>

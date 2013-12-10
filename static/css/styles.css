@@ -474,6 +474,16 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
   margin-top:10px;
 }
 
+div#paypal {
+ margin-top:10px;
+}
+
+div#paypal span {
+  color: #fff;
+  text-decoration:underline;
+  cursor:hand;
+  cursor:pointer;
+}
 
 #contribute .btn {
   font-size: 18px;
@@ -577,7 +587,7 @@ body#thanks #details h2 a, body#thanks #details h2 a:visited {
 .poweredby {
   text-align:center;
   position:relative;
-  bottom:10px;
+  bottom:20px;
 }
 
 .footer {

@@ -22,6 +22,7 @@ module.exports = function(app){
 	// Methods of payment
 	require('./coinbase')(app);
 	require('./stripe')(app);
+	require('./paypal')(app);
 
 	// Log transactions, with promise.
 	app.logTransaction = function(transaction){

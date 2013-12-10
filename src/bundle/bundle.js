@@ -16,6 +16,8 @@ module.exports = function(app){
 			response.render("jailbreak/index.ejs",{
 				transactions: transactions,
 				environment:{
+					PAYPAL_ACTION: process.env.PAYPAL_ACTION,
+					PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,
 					STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
 				}
 			});
@@ -28,6 +30,8 @@ module.exports = function(app){
 			response.render("jailbreak/index-alt.ejs",{
 				transactions: transactions,
 				environment:{
+					PAYPAL_ACTION: process.env.PAYPAL_ACTION,
+					PAYPAL_RECEIVER_EMAIL: process.env.PAYPAL_RECEIVER_EMAIL,
 					STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
 				}
 			});
