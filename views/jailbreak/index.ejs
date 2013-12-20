@@ -1,52 +1,37 @@
 <%
 var project = {
-	title: "The Device Freedom Prize"
+  title: "The Device Freedom Prize"
 };
 
 // Parse all floats
 transactions = transactions.map(function(transaction){
-	transaction.amount = parseFloat(transaction.amount);
-	return transaction;
+  transaction.amount = parseFloat(transaction.amount);
+  return transaction;
 });
 
 // Remove broken transactions
 transactions = transactions.filter(function(transaction){
-	if(isNaN(transaction.amount)) return false;
-	if(transaction.amount<1) return false;
-	return true;
+  if(isNaN(transaction.amount)) return false;
+  if(transaction.amount<1) return false;
+  return true;
 });
 
 // Sort transactions
 transactions.sort(function(a,b){
-	return parseFloat(b.amount) - parseFloat(a.amount);
+  return parseFloat(b.amount) - parseFloat(a.amount);
 });
 
 // Sum up transactions
 var total_raised = transactions.reduce(function(previousValue,currentValue){
-	return previousValue + parseFloat(currentValue.amount);
+  return previousValue + parseFloat(currentValue.amount);
 },0);
 
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <!-- Google Analytics Content Experiment code -->
-      <script>function utmx_section(){}function utmx(){}(function(){var
-      k='79562297-0',d=document,l=d.location,c=d.cookie;
-      if(l.search.indexOf('utm_expid='+k)>0)return;
-      function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-      indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-      length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-      '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-      '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-      '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-      valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-      '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-      </script><script>utmx('url','A/B');</script>
-      <!-- End of Google Analytics Content Experiment code -->
-
-	<title>Is iOS7 jailbroken yet?</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is iOS7 jailbroken yet?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="shortcut icon" href="favicon.ico"/>
       <%- include header-includes.ejs %>
       <%- include analytics.ejs %>
@@ -203,7 +188,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
 
   <div id="contribute">
     <div class="container">
-    	  <% include payments.ejs %>
+        <% include payments.ejs %>
     </div>
   </div>
 
@@ -220,7 +205,7 @@ var total_raised = transactions.reduce(function(previousValue,currentValue){
     }
   </script>
   <script>
-  	var STRIPE_PUBLIC_KEY = "<%=environment.STRIPE_PUBLIC_KEY%>";
+    var STRIPE_PUBLIC_KEY = "<%=environment.STRIPE_PUBLIC_KEY%>";
       var PAYPAL_ACTION = "<%=environment.PAYPAL_ACTION%>";
       var PAYPAL_RECEIVER_EMAIL = "<%=environment.PAYPAL_RECEIVER_EMAIL%>";
   </script>
