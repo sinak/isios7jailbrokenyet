@@ -53,7 +53,7 @@ function pay(method){
 
 			StripeCheckout.open({
 				key:         STRIPE_PUBLIC_KEY,
-				address:     false,
+				billingAddress:     true,
 				amount:      formData.amount*100, // Convert to cents, coz that's what Stripe wants.
 				currency:    'usd',
 				name:        'Device Freedom Prize',
