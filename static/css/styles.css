@@ -41,12 +41,23 @@ a:visited {
   padding-right: 0px;
   color: #fff;
   margin-bottom: 10px;
+  padding-top:30px;
 }
 
 .jumbotron #prize {
   background: transparent url(../img/prize-bg.png) repeat-x;
   min-height:240px;
-  margin-top: 40px;
+  margin-top: 30px;
+}
+
+.jumbotron #staytuned a {
+  color: #fff;
+  text-decoration:underline;
+}
+
+.jumbotron #staytuned {
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .jumbotron h1 {
@@ -105,15 +116,18 @@ a:visited {
     margin-top: -2px;
   }
   .jumbotron.homepage h1 {
-    font-size: 34px;
-    margin-top: 48px;
+    font-size: 30px;
+    margin-top: 28px;
 }
+  .jumbotron.homepage p {
+    font-size:16px;
+  }
   .jumbotron.homepage h2 {
     font-size: 42px;
     font-weight:700;
 }
   .jumbotron.homepage #prize h3 {
-    font-size:20px;
+    font-size:17px;
     }
 }
 
