@@ -1,6 +1,6 @@
-var util = require('util');	
+var util = require('util');
 var express = require('express');
-var expressValidator = require('express-validator'); 
+var expressValidator = require('express-validator');
 var app = express();
 
 app.use('/', express.static('./static'));
@@ -11,12 +11,12 @@ app.listen(port);
 console.log('Express server started on port '+port);
 
 app.configure('production', function(){
-	app.get('*',function(req,res,next){
-	  if(req.headers['x-forwarded-proto']!='https')
-	    res.redirect('https://isios7jailbrokenyet.com'+req.url)
-	  else
-	    next() /* Continue to other routes if we're not redirecting */
-	});
+	// app.get('*',function(req,res,next){
+	//   if(req.headers['x-forwarded-proto']!='https')
+	//     res.redirect('https://isios7jailbrokenyet.com'+req.url)
+	//   else
+	//     next() /* Continue to other routes if we're not redirecting */
+	// });
 });
 
 require('./anypay/anypay')(app);
